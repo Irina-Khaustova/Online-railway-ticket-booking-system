@@ -2,10 +2,31 @@
   text-align: center;
 }
 
+
 span .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
+h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+
+color: #000000;
+}
+
+.text-white {
+  color: #FFFFFF;
+}
 
 .container {
   width: 100%;
@@ -14,6 +35,12 @@ span .bold {
 .main-page-container {
   height: 985px;
   position: relative;
+}
+
+.img-nain-page-header {
+   width: 100%;
+  object-fit: cover;
+  height: 985px;
 }
 
 .navbar {
@@ -104,7 +131,7 @@ a {
   border-radius: 5px;
 }
 
-.main-page-header-title {
+.main-page-header-title{
   position: absolute;
   width: 506px;
   height: 170px;
@@ -112,15 +139,23 @@ a {
   top: 573px;
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 100;
   font-size: 72px;
   line-height: 84px;
   color: #FFFFFF;
 }
 
+.main-page-header-title .thin {
+  font-weight: 100;
+}
+
+.main-page-header-title .thick {
+  font-weight: 700;
+}
+
+
 /* AboutUs */
 
-.about-us-container {
+.about-us-container, .reviews-container{
   padding: 125px 258px 125px 258px;
   font-family: 'Roboto';
   box-sizing: border-box;
@@ -128,11 +163,6 @@ a {
 
 .about-us-title {
   width: 320px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
-  text-transform: uppercase;
 }
 
 .about-us-content {
@@ -156,8 +186,148 @@ a {
   left: -10px;
 }
 
-/* HowIrsWorked */
+ /* HowItsWorks */
 
-.how-its-worked-container {
+ .how-its-works-container {
+  width: 100%;
   height: 575px;
+  position: relative;
+  background: url(./img/359fa1466fc2860526cab5ac824d0ba5.png);
+  background-size: cover;
+ }
+
+ .how-its-works-container::after {
+  width: 100%;
+  height: 100%;
+  content: "";
+  position: absolute;
+  mix-blend-mode: normal;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background-color: #FFA800;
+  z-index: 2;
+  opacity: 30%;
+ }
+
+ .how-its-works-description {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  top: 60px;
+  padding: 0 252px 0 252px;
+ }
+
+ .how-its-works-container__learn-more {
+  width: 325px;
+  height: 60px;
+  border: 2px solid white;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 5;
+  line-height: 60px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+ }
+
+ .how-its-works-pictures-container {
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 90px;
+  padding: 0 513px 0 513px;
+  z-index: 10;
+ }
+
+.how-its-works-pictures-item {
+  width: 226px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
+
+.how-its-works-picture-text {
+  text-align: center;
+  margin-top: 42px;
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 28px;
+}
+
+/* Reviews */
+
+.reviews-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.reviews-content-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 630px;
+}
+
+.reviews-content-img {
+  width: 206px;
+  height: 206px;
+  border-radius: 50%;
+  background-position: center;
+}
+
+.img-1 {
+  background-image: url(../src/img/2fec5f0f798b8787930c80dd5d6472af.png);
+  background-size: 150%;
+}
+
+.img-2 {
+  background-image: url(../src/img/adb42ec0d354460adb5d422bc34dc958.png);
+  background-size: 250%;
+}
+
+.reviews-content-text {
+  width: 410px;
+  margin-left: 35px;
+}
+
+.reviews-content-text span {
+  font-weight: 300;
+  font-style: italic;
+  font-size: 18px;
+  color: #928F94;
+  position: relative;
+}
+
+.reviews-content-text span::before, .reviews-content-text span::after {
+  content: "“";
+  position: absolute;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+}
+
+.reviews-content-text span::before {
+  left: -20px;
+  top: -10px;
+}
+
+.reviews-content-text span::after {
+  right: -20px;
+  bottom: -20px;
+}
+
+
