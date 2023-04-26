@@ -1,19 +1,27 @@
+import { useNavigate } from "react-router-dom";
+
 export default function SearchTrainForm() {
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/train.html');
+  }
     
     return (
-      <form className="search-form">
-        <h2 className="search-form-title">Направление</h2>
+      <form className="search-train-form">
+        <h3 className="search-form-title">Направление</h3>
         <div className="search-form-input-container">
           <input className="search-form-input"></input>
           <input className="search-form-input"></input>
         </div>
-        <h2 className="search-form-title">Дата</h2>
+        <h3 className="search-form-title">Дата</h3>
         <div className="search-form-input-container">
           <input className="search-form-input"></input>
           <input className="search-form-input"></input>
         </div>
         <div className="search-form-input-container">
-        <button className="search-form-button">найти билеты</button>
+        <button className="search-form-button" onClick={handleClick}>найти билеты</button>
         </div>
       </form>
     );

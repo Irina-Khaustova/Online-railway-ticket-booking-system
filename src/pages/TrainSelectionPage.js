@@ -1,3 +1,7 @@
+import TrainSelectionPageHeader from "../components/trainSelectionPage/TrainSelectionPageHeader";
+import TrainSelectionPageMain from "../components/trainSelectionPage/TrainSelectionPageMain";
+import TrainSelectionPageSideBar from "../components/trainSelectionPage/TrainSelectionPageSideBar";
+
 export default function TrainSelectionPage() {
     // const dispatch = useDispatch();
     // useEffect(() => {
@@ -6,7 +10,12 @@ export default function TrainSelectionPage() {
     // }, []);
     return (
       <>
-      </>
+      <TrainSelectionPageHeader/>
+      <div className="train-selection-page-content" >
+      <TrainSelectionPageSideBar/>
+      </div>
+      <TrainSelectionPageMain/>
+           </>
     );
   }
   
