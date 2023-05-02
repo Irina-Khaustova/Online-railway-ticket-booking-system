@@ -103,18 +103,21 @@ a {
   padding-top: 72px;
 }
 
-
 .search-form-input {
   width: 317px;
   height: 60px;
   background: #FFFFFF;
   border-radius: 3px;
+  font-size: 20px;
 }
 
 .search-form-input-container {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 35px;
+  width: 685px;
 }
 
 .search-form-title {
@@ -124,12 +127,20 @@ a {
   font-size: 30px;
   line-height: 35px;
   color: #FFFFFF;
+  display: inline;
+}
+
+.search-form-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .search-form-button {
   width: 325px;
   height: 66px;
-  margin-top: 85px;
+  margin-top: 65px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 700;
@@ -140,6 +151,7 @@ a {
   color: #292929;
   background: #FFA800;
   border-radius: 5px;
+  z-index: 2;
 }
 
 .main-page-header-title{
@@ -470,6 +482,11 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
+.train-selection-page-container .search-form-button {
+  margin-right: 45px;
+  margin-top: 10px;
+}
+
 .img-train-selection-header {
   width: 100%;
   height: 596px;
@@ -485,10 +502,10 @@ background-size: cover;
   margin: auto;
   width: 1490px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
   top: 270px;
+  height: 350px;
+  
 }
 
 .train-selection-search-form-container {
@@ -499,6 +516,22 @@ background-size: cover;
   justify-content: space-between;
   padding: 0 44px 25px 44px;
   height: 300px;
+}
+
+.train-selection-search-form-inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30px 45px 0 45px;
+  z-index: 2;
+  box-sizing: border-box;
+  height: 150px;;
+  margin-bottom: 35px;
+}
+
+.train-selection-search-form-inputs .search-form-container {
+  height: 120px;
 }
 
 .train-selection-search-form::after {
@@ -512,7 +545,7 @@ background-size: cover;
 
 .train-selection-search-form-item {
   position: relative;
-  width: 49%;
+  width: 45%;
   z-index: 2;
 }
 

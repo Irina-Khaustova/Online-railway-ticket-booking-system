@@ -1,12 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useGetCitiesQuery } from "../../store/slices/MyApi";
 
+let id = 2;
+
 export default function TrainSelectionPageMain() {
 
     //const {countPlaces, sortElement} = useSelector((state) => state.trainSelection);
-    const { data: train, isLoading, isFetching, isError } = useGetCitiesQuery();
-    console.log(train)
+    const { data: cities, error, isLoading} = useGetCitiesQuery('мос');
+    console.log()
+    //const dispatch = useDispatch()
 
+  //dispatch()
+    
     return (
         <div className="train-selection-page-main-container">
           <div className="train-selection-page-main-header">

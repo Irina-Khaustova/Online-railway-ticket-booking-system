@@ -1,18 +1,22 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import trainSelection from '../slices/trainSelection';
+import searchTrainForm from '../slices/searchTrainForm';
 import { MyApi } from '../slices/MyApi';
+import { setupListeners } from '@reduxjs/toolkit/query'
 
-//import saga from '../sagas/indexToolkit';
+import saga from '../sagas/indexToolkit';
 
-//const sagaMiddleWare = createSagaMiddleware()
-//const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleWare];
-export default configureStore({
+const sagaMiddleWare = createSagaMiddleware()
+const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleWare];
+export const store = configureStore({
     reducer: {
-      trainSelection: trainSelection,
-      [MyApi.reducerPath]: MyApi,
+      searchTrainForm: searchTrainForm,
+      [MyApi.reducerPath]: MyApi.reducer,
     },
-    
+    middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(middleware, MyApi.middleware),
   });
 
 //sagaMiddleWare.run(saga);
+
+setupListeners(store.dispatch)

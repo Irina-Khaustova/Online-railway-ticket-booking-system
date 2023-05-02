@@ -3,18 +3,12 @@ const url = "https://netology-trainbooking.netoservices.ru";
 
 export const MyApi = createApi({
     reducerPath: "MyApi",
-    endpoints: (builder) => ({
-        getCities: builder.query({
-            queryFn: async () => {
-                try {
-                    const response = await fetch("https://netology-trainbooking.netoservices.ru/routes/cities?name=мос");
-                    return {data: await response.json() };
-                } catch (e) {
-                    return { error: e.message };
-                }
-            },
-        })
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://netology-trainbooking.netoservices.ru/' }),
+  endpoints: (builder) => ({
+    getCities: builder.query ({
+      query: (name) => `routes/cities?name=${name}`,
     }),
+  }),
 });
 
-export const { useGetCitiesQuery } = MyApi;
+export const { useGetCitiesQuery, getCities } = MyApi;
