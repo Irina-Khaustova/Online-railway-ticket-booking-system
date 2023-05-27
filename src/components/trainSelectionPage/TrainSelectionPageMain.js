@@ -1,16 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useGetCitiesQuery } from "../../store/slices/MyApi";
+import { useGetTrainQuery } from "../../store/slices/MyApi";
+import searchTrainForm from "../../store/slices/searchTrainForm";
+import { useState } from "react";
+//import { useGetCitiesQuery } from "../../store/slices/MyApi";
+import TrainItem from "./additional/TrainItem";
 
 let id = 2;
 
 export default function TrainSelectionPageMain() {
 
-    //const {countPlaces, sortElement} = useSelector((state) => state.trainSelection);
-    const { data: cities, error, isLoading} = useGetCitiesQuery('мос');
-    console.log()
+    //const [searchTrain, setSearchTrain] = useState('');
+    const { pointOfDeparture, deatination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
+    const { data: trains, error, isLoading} = useGetTrainQuery(`${trainSelection}`);
+    console.log(trainSelection)
     //const dispatch = useDispatch()
 
-  //dispatch()
+  console.log(trains);
     
     return (
         <div className="train-selection-page-main-container">
@@ -31,7 +36,9 @@ export default function TrainSelectionPageMain() {
             <div>10</div>
             <div>20</div>
           </div>
-          
+          <div className="train-selection-page-mane search-train-container">
+            
+          </div>
         </div>
     );
   }

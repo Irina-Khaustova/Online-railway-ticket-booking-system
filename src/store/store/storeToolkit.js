@@ -1,7 +1,7 @@
 import createSagaMiddleware from 'redux-saga';
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import searchTrainForm from '../slices/searchTrainForm';
-import { MyApi } from '../slices/MyApi';
+import { myApi } from '../slices/MyApi';
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 import saga from '../sagas/indexToolkit';
@@ -11,10 +11,10 @@ const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleWare];
 export const store = configureStore({
     reducer: {
       searchTrainForm: searchTrainForm,
-      [MyApi.reducerPath]: MyApi.reducer,
+      [myApi.reducerPath]: myApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(middleware, MyApi.middleware),
+    getDefaultMiddleware().concat(middleware, myApi.middleware),
   });
 
 //sagaMiddleWare.run(saga);

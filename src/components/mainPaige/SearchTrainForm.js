@@ -8,7 +8,7 @@ export default function SearchTrainForm() {
     
     return (
       <form className="search-train-form">
-        <Input classContainer="search-train-form-container"></Input>
+        <Input></Input>
       </form>
     );
   }

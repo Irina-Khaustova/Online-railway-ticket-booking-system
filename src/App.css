@@ -112,6 +112,7 @@ a {
 }
 
 .search-form-input-container {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -128,6 +129,33 @@ a {
   line-height: 35px;
   color: #FFFFFF;
   display: inline;
+}
+
+
+.point-of-departure-menu, .destination-menu {
+  display: none;
+}
+
+.point-of-departure-menu-active, .destination-menu-active {
+  display: block;
+  position: absolute;
+  top: 72px;
+  z-index: 10;
+  width: 326px;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}
+
+.point-of-departure-menu-active {
+  left: 0;
+}
+
+.destination-menu-active {
+  right: 0;
+}
+
+.point-of-departure-menu-text, .destination-menu-text {
+  padding: 10px;
 }
 
 .search-form-button-container {

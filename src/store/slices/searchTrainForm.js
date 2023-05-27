@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  pointOfDepartur : null,
-  destination: null,
+  pointOfDeparture : '',
+  destination: '',
   datePointOfDeparture : '',
   dateDestination: '',
   test: null,
+  trainSelection: '',
+  className1: '',
 };
 
 export const searchTrainFormSlice = createSlice({
@@ -14,11 +16,13 @@ export const searchTrainFormSlice = createSlice({
    reducers: {
    putSearchFormValues: (state, action) => {
     const newState = action.payload
-    console.log(newState.datePointOfDepartur + 33)
-      state.pointOfDepartur = newState.pointOfDepartur;
+    console.log(newState.datePointOfDeparture + 33)
+      state.pointOfDeparture = newState.pointOfDeparture;
       state.destination = newState.destination;
       state.datePointOfDeparture = newState.datePointOfDeparture;
       state.dateDestination = newState.dateDestination;
+      state.trainSelection = newState.trainSelection;
+      state.className1 = newState.class;
          },
 
   
