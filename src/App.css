@@ -676,6 +676,8 @@ z-index: 2;
   display: flex;
   flex-direction: row;
   margin-bottom: 36px;
+  position: relative;
+  font-size: 18px;
 }
 
 .train-selection-sidebar-railway-carriage-item:last-child {
@@ -723,4 +725,25 @@ z-index: 2;
   display: block;
   top: 0;
   left: 0;
+}
+
+.train-selection-sidebar-railway-carriage-item-slider {
+  width: 75px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+}
+
+.train-selection-sidebar-railway-carriage-item-slider > div {
+  display: inline-block;
+  width: 49%;
+  height: 30px;
+}
+
+.slider-off {
+  background: url("../src/img/Group 2.svg") no-repeat;
+}
+
+.slider-on {
+  background: url("../src/img/Group 2@2x.svg") no-repeat;
 }

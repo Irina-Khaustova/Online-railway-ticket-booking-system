@@ -7,7 +7,6 @@ const initialState = {
   dateDestination: '',
   test: null,
   trainSelection: '',
-  className1: '',
 };
 
 export const searchTrainFormSlice = createSlice({
@@ -22,7 +21,6 @@ export const searchTrainFormSlice = createSlice({
       state.datePointOfDeparture = newState.datePointOfDeparture;
       state.dateDestination = newState.dateDestination;
       state.trainSelection = newState.trainSelection;
-      state.className1 = newState.class;
          },
 
   

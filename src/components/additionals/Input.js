@@ -6,74 +6,82 @@ import { searchTrainForm } from "../../store/slices/searchTrainForm";
 import { useGetCitiesQuery, useGetTrainQuery } from "../../store/slices/MyApi";
 import { myApi } from "../../store/slices/MyApi";
 
-export default function Input() {
+export default function Input(props) {
 
   //const { className1 } = useSelector((state) => state.searchTrainForm);
   //console.log(className1)
-  //const {classContainer} = props;
+  const {classContainer} = props;
   //let flag = false;
 
   const dispatch = useDispatch();
+  const {pointOfDeparture, destination, datePointOfDeparture, dateDestination} = useSelector((state) => state.searchTrainForm)
+  console.log(pointOfDeparture, destination, 789)
 
-   const [classInput, setClassInput] = useState();
   const [cityDestination, setCityDestination] = useState();
   const [cityPointOfDeparture, setCityPointOfDeparture] = useState();
   const [citiesToDraw, setCitiesToDraw] = useState();
-  const [valuePointOfDeparture, setValuePointOfDeparture] = useState();
-  const [valueDestination,setValueDestination] = useState();
-  const [valueDatePointOfDeparture, setValueDatePointOfDeparture] = useState();
-  const [valueDateDestination, setValueDateDestination] = useState();
+  const [valuePointOfDeparture, setValuePointOfDeparture] = useState(pointOfDeparture);
+  const [valueDestination,setValueDestination] = useState(destination);
+  const [valueDatePointOfDeparture, setValueDatePointOfDeparture] = useState(datePointOfDeparture);
+  const [valueDateDestination, setValueDateDestination] = useState(dateDestination);
   const [classNamePointOfDeparture, setClassNamePointOfDeparture] = useState('point-of-departure-menu-active');
   const [classNameDestination, setClassNameDestination] = useState('destination-menu-active');
 
-  const {pointOfDeparture, destination, datePointOfDeparture, dateDestination, className1} = useSelector((state) => state.searchTrainForm)
+  
   console.log(pointOfDeparture + 2)
 
-  useEffect(() => {
-    setClassInput(className1);
-    setValuePointOfDeparture(pointOfDeparture);
-    console.log(className1 + 3)
-    setValueDestination(destination);
-    setValueDatePointOfDeparture(datePointOfDeparture);
-    setValueDateDestination(dateDestination);
-  }, [])
+  // useEffect(() => {
+  //   setValuePointOfDeparture(pointOfDeparture);
+  //   setValueDestination(destination);
+  //   setValueDatePointOfDeparture(datePointOfDeparture);
+  //   setValueDateDestination(dateDestination);
+  // }, [])
 
   const navigate = useNavigate();
  
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    let a = `from_city_id=${cityPointOfDeparture}&to_city_id=${cityDestination}`;
+    dispatch(putSearchFormValues({
+      pointOfDeparture: valuePointOfDeparture,
+      destination: valueDestination,
+      datePointOfDeparture: valueDatePointOfDeparture,
+      dateDestination: valueDateDestination,
+      trainSelection: a,
+    }))
     console.log(valueDatePointOfDeparture, valueDestination, cityPointOfDeparture, cityDestination)
-  if (classInput === '') {
-    console.log(4445)
-    setClassInput('train-selection-search-form-inputs');
-    console.log(classInput + 666)
+
+    
+if(classContainer === 'search-train-form-container'){
   navigate('/train.html');
-  }
-  setClassInput('good')
-  const a = `from_city_id=${cityPointOfDeparture}&to_city_id=${cityDestination}`;
-  console.log(cityPointOfDeparture, cityDestination, 44)
-  setCitiesToDraw(a)
-  console.log(a + 77);
-  dispatch(putSearchFormValues({
-    pointOfDeparture: valuePointOfDeparture,
-    destination: valueDestination,
-    datePointOfDeparture: valueDatePointOfDeparture,
-    dateDestination: valueDateDestination,
-    trainSelection: a,
-    class: "train-selection-search-form-inputs",
-  }))
-  dispatch(putTest(13))
-  console.log(citiesToDraw + 77);
+}
+  
+  
 }
 
 const handleChangePointOfDeparture = (evt) => {
   setValuePointOfDeparture(evt.target.value);
   setClassNamePointOfDeparture('point-of-departure-menu-active')
+  dispatch(putSearchFormValues({
+    pointOfDeparture: valuePointOfDeparture,
+    destination: valueDestination,
+    datePointOfDeparture: valueDatePointOfDeparture,
+    dateDestination: valueDateDestination,
+    trainSelection: 44,
+  }))
 }
 
 const handleChangeDestination = (evt) => {
   setValueDestination(evt.target.value);
   setClassNameDestination('destination-menu-active')
   console.log(evt.target)
+  dispatch(putSearchFormValues({
+    pointOfDeparture: valuePointOfDeparture,
+    destination: valueDestination,
+    datePointOfDeparture: valueDatePointOfDeparture,
+    dateDestination: valueDateDestination,
+    trainSelection: 44,
+  }))
 }
 
 const handleChangeDatePointOfDeparture = (evt) => {
@@ -113,7 +121,7 @@ const handleBlur = () => {
 
       return (
         <>
-        <div className={classInput}>
+        <div className={classContainer}>
           <div className="search-form-container">
             <h3 className="search-form-title">Направление</h3>
             <div className="search-form-input-container">

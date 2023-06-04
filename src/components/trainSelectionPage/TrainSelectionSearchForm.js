@@ -7,7 +7,7 @@ export default function TrainSelectionSearchForm() {
 
     return (
       <form className="train-selection-search-form">
-        <Input></Input>        
+        <Input classContainer="train-selection-search-form-inputs"></Input>        
       </form>
     );
   }

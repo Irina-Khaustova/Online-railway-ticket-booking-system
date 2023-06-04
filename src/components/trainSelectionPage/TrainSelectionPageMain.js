@@ -12,16 +12,21 @@ export default function TrainSelectionPageMain() {
     //const [searchTrain, setSearchTrain] = useState('');
     const { pointOfDeparture, deatination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
     const { data: trains, error, isLoading} = useGetTrainQuery(`${trainSelection}`);
-    console.log(trainSelection)
+    console.log(trains)
+
+    const [firstClass, setFirstClass] = useState(true);
+    const [secondclass, setSecondClass] = useState(true);
+    const [thirdClass, setThirdClass] = useState(true);
+    
     //const dispatch = useDispatch()
 
-  console.log(trains);
+  console.log();
     
     return (
         <div className="train-selection-page-main-container">
           <div className="train-selection-page-main-header">
             <div className="">
-                Найдено {}
+                Найдено {} 
             </div>
             <div className="train-selection-page-main sortingElements-container">
                 <div>сортировать по {}</div>
