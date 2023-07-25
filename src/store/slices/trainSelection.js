@@ -1,19 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  countPlaces : null,
-  sortElement: null,
-  cities: [],
+  trainsToDraw : [],
+  counts: 0,
+  error: null,
 };
 
 export const trainSelectionSlice = createSlice({
   name: "trainSelection",
   initialState,
    reducers: {
-   putCities: (state, action) => {
-    
-        state.cities = action.payload;
-      }
+   putTrains: (state, action) => {
+        console.log(action.payload)
+        state.trainsToDraw = action.payload.items;
+        state.counts = action.payload.total_count;
+        //state.counts = action.paiload.total_count;
+      },
+   putError: (state, action) => {
+      state.error = action.payload;
+   }
       
 //       state.productsInBasket.push(action.payload);
 //       window.localStorage.setItem(
@@ -57,7 +62,8 @@ export const trainSelectionSlice = createSlice({
 });
 
 export const {
-   putCities,
+   putTrains,
+   putError,
 //   deleteProductInBasket,
 //   changeProductInBaslet,
 //   submitForm,

@@ -8,6 +8,16 @@ const initialState = {
   wiFi: null,
   express: '',
   price: "",
+  startDepartureHourFrom: "",
+  startDepartureHourTo: "",
+  startArrivalHourFrom: "",
+  startArrivalHourTo: "",
+  endDepartureHourFrom: "",
+  endDepartureHourTo: "",
+  endArrivalHourFrom: "",
+  endArrivalHourTo: "",
+  priceFrom:"",
+  priceTo: "",
 };
 
 export const sidebarSettingsItemSlice = createSlice({
@@ -22,20 +32,20 @@ export const sidebarSettingsItemSlice = createSlice({
          },
 
   
-    putTest: (state, action) => {
-      state.test = action.payload;
-      console.log(state.test)
+    putTime: (state, action) => {
+      state[action.payload.type] = action.payload.value;
     },
 },
 });
 
 export const {
   putValues,
+  putTime,
 //   deleteProductInBasket,
 //   changeProductInBaslet,
 //   submitForm,
 //   changSubmittingFormStatus,
 //   showErrorSubmitting,
 } = sidebarSettingsItemSlice.actions;
- export const sidebarSettingItem = (state) => state.sidebarSettingsItem;
+ export const sidebarSettingItem = (state) => state.sidebarSettingsItemSlice;
  export default sidebarSettingsItemSlice.reducer;

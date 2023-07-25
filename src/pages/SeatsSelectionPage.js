@@ -1,21 +1,16 @@
 import TrainSelectionPageHeader from "../components/trainSelectionPage/TrainSelectionPageHeader";
-import TrainSelectionPageMain from "../components/trainSelectionPage/TrainSelectionPageMain";
+import SeatsSelectionPageMain from "../components/seatsSelection/SeatsSelectionPageMain";
 import TrainSelectionPageSideBar from "../components/trainSelectionPage/TrainSelectionPageSideBar";
 
-export default function TrainSelectionPage() {
-    // const dispatch = useDispatch();
-    // useEffect(() => {
-    //   dispatch(putInputValue(""));
-    //   // eslint-disable-next-line
-    // }, []);
+export default function SeatsSelectionPage() {
+    
     return (
       <>
       <TrainSelectionPageHeader/>
       <div className="train-selection-page-content" >
       <TrainSelectionPageSideBar/>
-      <TrainSelectionPageMain/>
+      <SeatsSelectionPageMain/>
       </div>
            </>
     );
   }
-  

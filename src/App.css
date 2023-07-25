@@ -630,6 +630,9 @@ z-index: 2;
   margin-top: 300px;
   padding: 0 260px 0 260px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .train-selection-sidebar-container {
@@ -696,15 +699,22 @@ z-index: 2;
 
 .train-selection-sidebar-direction-item {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  position: relative;
 }
 
-.train-selection-sidebar-direction-item svg {
+.train-selection-sidebar-direction-item-header {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+}
+
+.train-selection-sidebar-direction-item-header svg {
   position: absolute;
   left: 0;
+  top: 24px;
 }
 
 .train-selection-sidebar-direction-item h3 {
@@ -712,19 +722,82 @@ z-index: 2;
   font-weight: 700;
 }
 
-.train-selection-page-main .sortingElements-container {
-  position: relative;
-}
-
-.train-selection-page-main .sortingElements {
-  display: none;
+.train-selection-sidebar-direction-minus {
+  background-image: url("../src/img/minus.png");
+  width: 20px;
+  height: 20px;
   position: absolute;
+  top: 27px;
+  right: 0;
 }
 
-.train-selection-page-main .sortingElements:hover {
+.train-selection-sidebar-direction-plus {
+  background-image: url("../src/img/plus.png");
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 27px;
+  right: 0;
+}
+
+
+.open {
   display: block;
-  top: 0;
-  left: 0;
+}
+
+.close {
+  display: none;
+}
+
+.train-selection-page-main-header {
+  width: 100%;
+  margin-bottom: 47px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #928F94;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.train-selection-page-main-found {
+  width: 52%;
+}
+
+.sortingElements-container {
+  position: relative;
+  width: 240px;
+}
+
+.train-selection-page-main > .sortingElements {
+  display: none;
+}
+
+.train-selection-page-main > .sortingElements-active {
+  display: block;
+  box-sizing: border-box;
+  width: 117px;
+  padding: 0px 10px 10px 10px;
+  line-height: 5px;
+  top: -10px;
+  right: 0;
+  position: absolute;
+  background:  #F7F5F9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.train-selection-page-main > .sortingElements-active > p:nth-child(1),
+.train-selection-page-main > .sortingElements-active > p:nth-child(2) {
+  margin-bottom: 30px;
+}
+
+.number {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.number:hover {
+  cursor: pointer;
 }
 
 .train-selection-sidebar-railway-carriage-item-slider {
@@ -746,4 +819,599 @@ z-index: 2;
 
 .slider-on {
   background: url("../src/img/Group 2@2x.svg") no-repeat;
+}
+
+.train-selection-page-main-container {
+  width: 960px;
+}
+
+.train-selection-page-main-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.train-item {
+  display: flex;
+  flex-direction: row;
+  height: 355px;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  margin-bottom: 47px;
+}
+
+.train-direction-container {
+  padding: 30px 20px 20px 40px;
+}
+
+.train-number-container {
+  width: 197px;
+  background: #E4E0E9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.train-direction-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 480px;
+}
+
+.train-direction-item-section {
+  width: 165px;
+  min-height: 100px;
+}
+
+.duration {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10px;
+  color: #C4C4C4;
+  margin-left: 10px;
+  width: 125px;
+}
+
+.train-direction-item-section > .date, .price-container > .price{
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 10px;
+}
+
+.train-direction-item-section > .city{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 5px;
+}
+
+.train-direction-item-section > .station{
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 5px;
+  color: #928F94;
+}
+
+.right-arrow {
+  margin-top: 10px;
+}
+
+.type-of-place-container {
+  width: 240px;
+  padding: 40px 20px 20px 0px;
+}
+
+.type-of-place-container-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  align-items:center;
+}
+
+.type-of-place-container-item > .type{
+  width: 65px;
+  font-size: 16px;
+  font-weight: 400;
+  color:  #3E3C41;
+}
+
+.type-of-place-container-item > .number{
+  width: 25px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #FFA800;
+}
+
+.price-container {
+  position: relative;
+  width: 95px;
+}
+
+.price-container > .span-from{
+  font-size: 16px;
+  font-weight: 400;
+  color: #928F94;
+}
+
+
+.price-container > .price {
+  margin-left: 10px;
+  position: absolute;
+  right: 20px;
+  top: 3px;
+}
+
+.price-container > .img{
+  position: absolute;
+  right: 0;
+}
+
+.choice-seats-button {
+  background-color: #FFA800;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.range {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.side-bar-choce-time-item-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.side-bar-choce-time-item-container-from {
+  align-items: flex-start;
+}
+
+.side-bar-choce-time-item-container-to {
+  align-items: flex-end;
+}
+
+.side-bar-choce-time-item {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.range-text-begin, .range-text-end {
+  position: absolute;
+  top: 26px;
+}
+
+.range-text-end {
+  right: -10px;
+}
+
+
+.horizontal-slider {
+  width: 294px;
+  height: 19px;
+  border: 1px solid #C4C4C4;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.example-track-1{
+  background-color: #FFA800;
+  height: 18px;
+  border-radius: 8px;
+}
+
+.test-1 {
+  width: 20px;
+  height: 20px; 
+  background-color: #E5E5E5;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.test::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px; 
+  background-color: #E5E5E5;
+  border-radius: 50%;
+  text-align: center;
+  left: 7px;
+  top: -26px;
+}
+
+.example-thumb-0 > .test  {
+  position: absolute;
+  top: 25px;
+  left: -7px;
+}
+
+.example-thumb-1 > .test  {
+  position: absolute;
+  top: 25px;
+  left: -7px;
+}
+
+.example-thumb-1 > .test-1  {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+#close {
+  display: none;
+}
+
+.seats-selection-page-container {
+  margin-left: 85px;
+  width: 960px;
+}
+
+.seats-selection-page-departure {
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.seats-selection-page-choice-another-train-button {
+  box-sizing: border-box;
+  width: 325px;
+  height: 60px;
+  border: 1px solid #292929;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-left: 10px;
+}
+.seats-selection-page-departure-header {
+  display: flex;
+  flex-direction: row;
+  margin-top: 36px;
+  margin-left: 20px;
+}
+
+.seats-selection-page-departure-about-train {
+  display: flex;
+  flex-direction: row;
+  background-color: #F7F6F6;
+  padding: 15px 35px 15px 35px;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.directions-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 240px;
+}
+
+.direction-duration {
+  display: flex;
+  flex-direction: row;
+  
+}
+
+.direction-duration-information {
+  width: 180px;
+}
+
+.directions-information {
+  margin-left: 25px;
+  font-size: 16px;
+  width: 240px;
+}
+
+.train-number {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.station {
+
+}
+
+.seats-selection-page-departure-number-tickets {
+  padding: 20px;
+  height: 340px;
+  border-bottom: 1px dashed #C4C4C4;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.seats-selection-page-departure-number-tickets-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 16px 0 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.number-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.seats-number-input {
+  box-sizing: border-box;
+  width: 240px;
+  height: 50px;
+  left: 740px;
+  top: 1247px;
+  background: #FFFFFF;
+  border: 1px solid #928F94;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.seats-selection-page-departure-type-wagon-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 45px 20px 35px;
+  align-items: start;
+  width: 90%;
+}
+
+.seats-selection-page-departure-type-wagon {
+  min-width: 110px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.seats-selection-page-departure-type-wagon-class  {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seats-selection-page-departure-type-wagon-class:nth-child(2n+1) {
+  margin-right: 25%;
+}
+
+.seats-selection-page-departure-type-wagon-class:nth-child(2) {
+margin-right: 17%;
+}
+
+.seats-selection-page-departure-number-wagon {
+  background-color: rgba(255, 168, 0, 0.44);
+  height: 37px;
+  padding-left: 35px;
+  padding-right: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.seats-selection-page-departure-wagon-information {
+  height: 160px;
+  display: flex;
+  flex-direction: row;
+}
+
+.information-container {
+  width: 190px;
+  background-color: rgba(255, 217, 143, 1);
+}
+
+.seats-selection-page-departure-wagon-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.seats-selection-page-departure-wagon-item:nth-child(1) {
+  justify-content: center;
+  align-items: center;
+}
+
+.seats-selection-page-departure-wagon-item:nth-child(n+2) {
+  width: 240px;
+  padding-top: 30px;
+  padding-left: 85px;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.information-seats-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 1);
+}
+
+.information-seats-header {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(146, 143, 148, 1);
+}
+
+.information-seats-header-container{
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(146, 143, 148, 1);
+}
+
+.information-seats-header-container > p{
+  display: inline-block;
+}
+
+.information-seats-header-light {
+  color: rgba(196, 196, 196, 1);
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+.wagon-number {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 0;
+  margin: 28px;
+}
+
+.wagon-text {
+  font-size: 24px;
+  font-weight: 400;
+  margin:0px;
+}
+
+.wagon-scheme {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 70px;
+}
+
+.scheme {
+  position: absolute;
+  top: 25px;
+  left: 130px;
+}
+
+.scheme-fourth-class {
+  position: absolute;
+  top: 27px;
+  left: 134px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scheme-block1, .scheme-block2 {
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  font-size: 14px;
+  width: 711px;
+  border-right: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block1 {
+border-left: 4px solid rgb(146, 142, 142);
+border-top: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block1-fourth-class, .scheme-block2-fourth-class, .scheme-block5-fourth-class {
+  height: 23px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  padding: 4px 13px 0px 13px;
+  width: 711px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-weight: 700;
+  }
+
+.scheme-block-item-fourth-class {
+  width: 24px;
+  height: 17px;
+  background-color: #928F94;
+  text-align: center;
+  line-height: 17px;
+}
+
+.scheme-block2 {
+  border-left: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block-item {
+  width: 27px;
+  height: 31px;
+  text-align: center;
+  line-height: 31px;
+  background-color:#C4C4C4;
+}
+
+.scheme-block-item-first-class {
+  border-bottom: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block-item:nth-child(2n) {
+  margin-left: 34px;
+}
+
+.scheme-block-item:nth-child(2n+3) {
+  border-left: 3.5px solid rgb(146, 142, 142);
+}
+
+.scheme-block3-first-class {
+  width: 713px;
+  height: 18px;
+}
+
+.scheme-block3-third-class {
+  width: 713px;
+  height: 22px;
+}
+
+.scheme-block3-fourth-class {
+  width: 713px;
+  height: 22px;
+}
+
+.scheme-block4-item-first-class {
+  width: 88px;
+  background-color: white;
+  height: 24px;
+}
+
+.scheme-block4-item-first-class:nth-child(n+2) {
+  border-left: 3.5px solid rgb(146, 142, 142);
+}
+
+.scheme-block4-item-first-class:last-child {
+  border-right: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block4 {
+  width: 715px;
+  display: flex;
+  flex-direction: row;
+  border-left: 4px solid rgb(146, 142, 142);
+}
+
+.scheme-block4-fourth-class {
+  width: 597px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.scheme-block5-fourth-class {
+  width: 711px;
+  display: flex;
+  flex-direction: row;
+  height: 23px;
+}
+
+.scheme-block4-item {
+  width: 44px;
+  height: 24px;
+  border-bottom: 3.5px solid rgb(146, 142, 142);
+  text-align: center;
+  background-color:#C4C4C4;
+  line-height: 24px;
+}
+
+.scheme-block4-item:nth-child(2n+2) {
+  border-right: 3.5px solid rgb(146, 142, 142);
+}
+
+.number-seats-left-fourth-class {
+  position: absolute;
+  background-color: #FFA800;
+  width: 34px;
+  height: 25px;
+  left: 39px;
 }

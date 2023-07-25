@@ -61,7 +61,9 @@ if(classContainer === 'search-train-form-container'){
 
 const handleChangePointOfDeparture = (evt) => {
   setValuePointOfDeparture(evt.target.value);
+  console.log(evt.target.value)
   setClassNamePointOfDeparture('point-of-departure-menu-active')
+   console.log(valuePointOfDeparture + 77)
   dispatch(putSearchFormValues({
     pointOfDeparture: valuePointOfDeparture,
     destination: valueDestination,
@@ -74,7 +76,7 @@ const handleChangePointOfDeparture = (evt) => {
 const handleChangeDestination = (evt) => {
   setValueDestination(evt.target.value);
   setClassNameDestination('destination-menu-active')
-  console.log(evt.target)
+  console.log(valueDestination + 33)
   dispatch(putSearchFormValues({
     pointOfDeparture: valuePointOfDeparture,
     destination: valueDestination,
@@ -127,11 +129,11 @@ const handleBlur = () => {
             <div className="search-form-input-container">
             <input type="string" className="search-form-input point-of-departure" key={1} onChange={handleChangePointOfDeparture}  value={valuePointOfDeparture}></input>
             { valuePointOfDeparture && <div className={classNamePointOfDeparture}>
-            {cities.length > 0? cities.map((el) => <div className="point-of-departure-menu-text" key={el._id} onClick={handleClickCity} custom-attribute={el.name} id={el._id}>{el.name}</div>): null}
+            {(cities && cities.length > 0)? cities.map((el) => <div className="point-of-departure-menu-text" key={el._id} onClick={handleClickCity} custom-attribute={el.name} id={el._id}>{el.name}</div>): null}
             </div>}
             <input type="string" className="search-form-input destination" key={2} onChange={handleChangeDestination} value={valueDestination}></input>
             { valueDestination && <div className={classNameDestination}>
-            {citiesDestination.length > 0? citiesDestination.map((el) => <div className="destination-menu-text" key={el._id} onClick={handleClickCity} custom-attribute={el.name} id={el._id}>{el.name}</div>): null}
+            {(citiesDestination && citiesDestination.length) ? citiesDestination.map((el) => <div className="destination-menu-text" key={el._id} onClick={handleClickCity} custom-attribute={el.name} id={el._id}>{el.name}</div>): null}
             </div>}
             </div>
           </div>

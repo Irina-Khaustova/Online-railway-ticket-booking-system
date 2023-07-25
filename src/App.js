@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import MainPage from "./pages/MainPage";
 import TrainSelectionPage from "./pages/TrainSelectionPage";
-import PlaceSelectionPage from "./pages/PlaceSelectionPage";
+import SeatsSelectionPage from "./pages/SeatsSelectionPage";
 import PurchaseConfirmationPage from "./pages/PurchaseConfirmationPage";
 import SuccessfullNotificationPage from "./pages/SuccessfulNotificationPage";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<MainPage />} />
         <Route path="/train.html" element={<TrainSelectionPage />} />
-        <Route path="/catalog/:id.html" element={<PlaceSelectionPage/>} />
+        <Route path="/catalog/:id.html" element={<SeatsSelectionPage/>} />
         <Route path="/cart.html" element={<PurchaseConfirmationPage/>} />
         <Route path="/about.html" element={<SuccessfullNotificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
