@@ -12,8 +12,12 @@ export const myApi = createApi({
     ({
       query: (id) => `routes?${id}`,
     }),
+    getWagon: builder.query 
+    ({
+      query: (id) => `routes/${id}/seats`,
+    }),
   }),
 });
 
 
-export const { useGetCitiesQuery, useGetTrainQuery } = myApi;
+export const { useGetCitiesQuery, useGetTrainQuery, useGetWagonQuery } = myApi;

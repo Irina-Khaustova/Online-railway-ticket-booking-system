@@ -1,8 +1,16 @@
 import InputSeats from "../additionals/InputSeats";
-import WagonSchemeFourthClass from "./WagonSeatsFourthClass";
+import WagonSchemeFourthClass from "./WagonSeatsFourthClass"; 
+import { useGetWagonQuery } from "../../store/slices/MyApi";
 
 
-export default function SeatsSelectionPageMain() {
+export default function SeatsSelectionPageMain(props) {
+
+  const {id} = props;
+  console.log(id + 646)
+
+  const { data: wagons, error, isLoading} = useGetWagonQuery(`${id}`);
+  console.log(wagons)
+
   return (
     <>
       <div className="container seats-selection-page-container">

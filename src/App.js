@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<MainPage />} />
         <Route path="/train.html" element={<TrainSelectionPage />} />
-        <Route path="/catalog/:id.html" element={<SeatsSelectionPage/>} />
+        <Route path="/wagon/:id.html" element={<SeatsSelectionPage/>} />
         <Route path="/cart.html" element={<PurchaseConfirmationPage/>} />
         <Route path="/about.html" element={<SuccessfullNotificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>

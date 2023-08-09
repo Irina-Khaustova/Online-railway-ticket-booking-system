@@ -21,13 +21,21 @@ const handleClick = (evt) => {
   }
 }
 
+const handleClickOff = () => {
+  console.log(3)
+}
+
+const handleClickOn = () => {
+  console.log(3)
+}
+
           return (
               <div className="train-selection-sidebar-railway-carriage-item">
                 {props.children}
                 <div className="">{props.type}</div>
                 <div className={select} onClick={handleClick}>
-                  <div className="off"></div>
-                  <div className="on"></div>
+                  <div className="off" onClick={handleClickOff}></div>
+                  <div className="on" onClick={handleClickOn}></div>
                 </div>
               </div>
           )    

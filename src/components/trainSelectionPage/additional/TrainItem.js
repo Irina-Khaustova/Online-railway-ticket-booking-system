@@ -1,10 +1,13 @@
 import { useSelector } from "react-redux";
 import searchTrainForm from "../../../store/slices/searchTrainForm";
+import { useNavigate } from "react-router-dom";
 
 export default function TrainItem(el) {
 
   const { pointOfDeparture, destination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
   console.log(el.el.departure.train, 88)
+
+  const navigate = useNavigate();
 
   const convert = (x) => {
     const milliseconds = x*1000;
@@ -30,6 +33,11 @@ export default function TrainItem(el) {
     min = (arr.side_price && min && arr.side_price < min)? arr.side_price : min;
      return min;
    }
+
+  const handleClickChooseSeats = () => {
+    console.log(el.el.departure._id) 
+    navigate(`/wagon/${el.el.departure._id}.html`)
+  }
 
     return (
         <div className="train-item">  
@@ -155,7 +163,7 @@ export default function TrainItem(el) {
 <path d="M89.955 17.0709C89.955 17.7223 89.955 18.3486 89.955 18.9999C83.9616 18.9999 77.9933 18.9999 72 18.9999C72 18.3486 72 17.7348 72 17.0709C77.9683 17.0709 83.9366 17.0709 89.955 17.0709Z" fill="#C4C4C4"/>
 </svg>
                   </div>
-                  <button className="choice-seats-button" >Выбрать места</button>
+                  <button className="choice-seats-button" onClick={handleClickChooseSeats} >Выбрать места</button>
                 </div>
             </div>
             </div>

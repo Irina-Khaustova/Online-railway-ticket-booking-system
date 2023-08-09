@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetTrainQuery } from "../../store/slices/MyApi";
 import searchTrainForm from "../../store/slices/searchTrainForm";
 import trainSelection, { putTrains, putError } from "../../store/slices/trainSelection";
+import sidebarSettingsItem from "../../store/slices/sidebarSettingsItem";
 import { useEffect, useState } from "react";
 //import { useGetCitiesQuery } from "../../store/slices/MyApi";
 import TrainItem from "./additional/TrainItem";
@@ -11,10 +12,33 @@ let id = 2;
 export default function TrainSelectionPageMain() {
 
     //const [searchTrain, setSearchTrain] = useState('');
-    const { pointOfDeparture, deatination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
-    const { trainsToDraw} = useSelector((state ) => state.trainSelection)
-    const { data: trainsData, error, isLoading} = useGetTrainQuery(`${trainSelection}`);
-    console.log(trainsData)
+    const { pointOfDeparture, deatination, datePointOfDeparture, dateDestination,  trainSelection, className} = useSelector((state) => state.searchTrainForm);
+    const { trainsToDraw} = useSelector((state ) => state.trainSelection);
+    const {parameters} = useSelector((state) => state.sidebarSettingsItem);
+    //const requestParams = 
+    const { data: trainsData, error, isLoading} = useGetTrainQuery(`${trainSelection}&have_first_class=${null}`);
+    //console.log(trainsData)
+
+    const [sortNumber, setSortNumber] = useState(5);
+    const [sortElement, setSortElement] = useState('времени');
+    const [sortingSelector, setSortingSelector] = useState('train-selection-page-main sortingElements');
+    const [count, setCount] = useState(0);
+    const [trains, setTrains] = useState(trainsToDraw);
+    const [firstClass, setFirstClass] = useState(true);
+    const [secondclass, setSecondClass] = useState(true);
+    const [thirdClass, setThirdClass] = useState(true);
+    const [sliderArray, setSliderArray] = useState(null);
+
+    //const [trainsToDraw, setTrainsToDraw] = [];
+
+    useEffect(() => { 
+      for(let i=0; i < parameters.length; i+=1) {
+        trains.filter(el => el[parameters[i]]);
+        console.log(trains)
+        dispatch(putTrains(trains))
+      }
+      dispatch(putTrains)
+    },[parameters])
 
     const dispatch = useDispatch();
 
@@ -71,16 +95,6 @@ useEffect(() => {
 
 }, [])
     
-    const [sortNumber, setSortNumber] = useState(5);
-    const [sortElement, setSortElement] = useState('времени');
-    const [sortingSelector, setSortingSelector] = useState('train-selection-page-main sortingElements');
-    const [count, setCount] = useState(0);
-    const [trains, setTrains] = useState(trainsToDraw);
-    const [firstClass, setFirstClass] = useState(true);
-    const [secondclass, setSecondClass] = useState(true);
-    const [thirdClass, setThirdClass] = useState(true);
-    const [sliderArray, setSliderArray] = useState(null);
-
     //const dispatc,h = useDispatch()
     const aht = [1, 2, 3];
 

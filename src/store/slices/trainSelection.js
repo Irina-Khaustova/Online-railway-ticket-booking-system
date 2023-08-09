@@ -4,6 +4,7 @@ const initialState = {
   trainsToDraw : [],
   counts: 0,
   error: null,
+  choiceTrainTo: null,
 };
 
 export const trainSelectionSlice = createSlice({
@@ -18,52 +19,18 @@ export const trainSelectionSlice = createSlice({
       },
    putError: (state, action) => {
       state.error = action.payload;
-   }
-      
-//       state.productsInBasket.push(action.payload);
-//       window.localStorage.setItem(
-//         "productsInBasket",
-//         JSON.stringify(state.productsInBasket)
-//       );
-//     },
-
-//     deleteProductInBasket: (state, action) => {
-//       state.productsInBasket = state.productsInBasket.filter(
-//         (el) => el.product.id + el.size !== action.payload
-//       );
-//       window.localStorage.setItem(
-//         "productsInBasket",
-//         JSON.stringify(state.productsInBasket)
-//       );
-//     },
-//     changeProductInBaslet: (state, action) => {
-//       state.productsInBasket[action.payload.index].quantity +=
-//         action.payload.quantity;
-//       window.localStorage.setItem(
-//         "productsInBasket",
-//         JSON.stringify(state.productsInBasket)
-//       );
-//     },
-
-//     submitForm: (state, action) => {
-//       state.submittingFormStatus = true;
-//       state.productsInBasket = [];
-//       window.localStorage.setItem("productsInBasket", JSON.stringify([]));
-//     },
-
-//     changSubmittingFormStatus: (state, action) => {
-//       state.submittingFormStatus = false;
-//     },
-
-//     showErrorSubmitting: (state, action) => {
-//       state.errorSubmiting = action.payload;
-//     },
+   },
+   putChoiceTrain: (state, action) => {
+      state.choiceTrainTo = action.payload.to;
+      state.choiceTrainfrom = action.payload.from;
+   }, 
  },
 });
 
 export const {
    putTrains,
    putError,
+   putChoiceTrain,
 //   deleteProductInBasket,
 //   changeProductInBaslet,
 //   submitForm,
