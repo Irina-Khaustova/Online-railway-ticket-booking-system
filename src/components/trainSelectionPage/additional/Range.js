@@ -7,7 +7,7 @@ import { sidebarSettingsItem } from "../../../store/slices/sidebarSettingsItem";
 
 export default function Range(props) {
 
-    console.log(props)
+    console.log(typeof(props.max), props.max)
 
     const add = props.add;
     const [value, setValue] = useState([0, 24]);   
@@ -47,7 +47,7 @@ return (
     className="horizontal-slider"
     thumbClassName="example-thumb"
     trackClassName="example-track"
-    defaultValue={[`${props.min}`, `${props.max}`]}
+    defaultValue={[Number(props.min), Number(props.max)]}
     ariaLabel={['Lower thumb', 'Upper thumb']}
     ariaValuetext ={state => `Thumb value ${state.valueNow}`}
     onChange={(value, state) => {setValue(state.valueNow)
@@ -55,8 +55,8 @@ return (
     dispatch(putTime({type: `${props.type}To`, value: value[1]}))}}
     renderThumb={(props, state) => <div {...props}>{<><div className="test">{`${state.valueNow}${add}`}</div></>}</div>}
     pearling
-    min={props.min}
-    max={props.max}
+    min={Number(props.min)}
+    max={Number(props.max)}
     minDistance={2}
 />
 <div className="range-text-end" id={classCloseEnd}>{props.end}</div>

@@ -15,7 +15,7 @@ export const searchTrainFormSlice = createSlice({
    reducers: {
    putSearchFormValues: (state, action) => {
     const newState = action.payload
-    console.log(newState.datePointOfDeparture + 33)
+    console.log(newState.trainSelection+ 33)
       state.pointOfDeparture = newState.pointOfDeparture;
       state.destination = newState.destination;
       state.datePointOfDeparture = newState.datePointOfDeparture;

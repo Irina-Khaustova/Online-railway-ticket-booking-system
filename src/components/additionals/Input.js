@@ -61,7 +61,7 @@ if(classContainer === 'search-train-form-container'){
 
 const handleChangePointOfDeparture = (evt) => {
   setValuePointOfDeparture(evt.target.value);
-  console.log(evt.target.value)
+  console.log(evt.target.value) 
   setClassNamePointOfDeparture('point-of-departure-menu-active')
    console.log(valuePointOfDeparture + 77)
   dispatch(putSearchFormValues({
@@ -69,7 +69,7 @@ const handleChangePointOfDeparture = (evt) => {
     destination: valueDestination,
     datePointOfDeparture: valueDatePointOfDeparture,
     dateDestination: valueDateDestination,
-    trainSelection: 44,
+    trainSelection: '',
   }))
 }
 
@@ -82,7 +82,7 @@ const handleChangeDestination = (evt) => {
     destination: valueDestination,
     datePointOfDeparture: valueDatePointOfDeparture,
     dateDestination: valueDateDestination,
-    trainSelection: 44,
+    trainSelection: '',
   }))
 }
 

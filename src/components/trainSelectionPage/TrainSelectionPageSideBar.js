@@ -6,19 +6,23 @@ import Range from "./additional/Range";
 
 export default function TrainSelectionPageSideBar() {
 
-  const [classValue, setClassValue] = useState("train-selection-sidebar-direction-minus");
-  const [openBlock, setOpenBlock] = useState("close");
+  const [classValueTo, setClassValueTo] = useState("train-selection-sidebar-direction-plus");
+  const [classValueFrom, setClassValueFrom] = useState("train-selection-sidebar-direction-plus");
+  const [openBlockTo, setOpenBlockTo] = useState("close");
+  const [openBlockFrom, setOpenBlockFrom] = useState("close");
 
-  const handleClick = () => {
-    if (classValue === "train-selection-sidebar-direction-minus") {
-      setClassValue("train-selection-sidebar-direction-plus")
-      setOpenBlock("close")
+  const handleClick = (evt) => {
+    const element = evt.target.previousSibling.value
+    console.log(evt.target.parentNode.nextSibling.className)
+    if (evt.target.className ===  'train-selection-sidebar-direction-plus')  {
+      evt.target.className = "train-selection-sidebar-direction-minus"; 
+      evt.target.parentNode.nextSibling.className = 'open'
     } else {
-      setClassValue("train-selection-sidebar-direction-minus")
-      setOpenBlock("open")
+      evt.target.className = "train-selection-sidebar-direction-plus"; 
+      evt.target.parentNode.nextSibling.className = 'close'
+      }
     }
-  }
-    
+      
     return (
       <div className="train-selection-sidebar-container text-white">
         <div className="train-selection-sidebar-settings">
@@ -88,10 +92,10 @@ export default function TrainSelectionPageSideBar() {
             <svg width="32" height="26" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fillRule="evenodd" clipRule="evenodd" d="M5 0C2.23853 0 0 2.23859 0 5V21C0 23.7615 2.23853 26 5 26H27C29.7615 26 32 23.7615 32 21V5C32 2.23859 29.7615 0 27 0H5ZM17.8372 14.2238V17.3334L17.8811 17.2911C19.374 15.8507 20.8811 14.3975 22.3159 13.0288L22.2261 12.9413C20.7908 11.5435 19.3137 10.1051 17.8225 8.66669V11.9491H9.68433V14.2238H17.8372Z" fill="#FFA800"/>
 </svg>
-                <h3>Туда</h3>
-                <div className={classValue} onClick={handleClick}></div>
+                <h3 id='Туда'>Туда</h3>
+                <div className='train-selection-sidebar-direction-plus' onClick={handleClick}></div>
             </div>
-            <SidebarChoiceTime type='DepartureHour' classValue={openBlock}></SidebarChoiceTime>
+            <SidebarChoiceTime type='DepartureHour' className='close'></SidebarChoiceTime>
             </div>
         </div>
         <div className="train-selection-sidebar-direction train-selection-sidebar-item">
@@ -100,10 +104,10 @@ export default function TrainSelectionPageSideBar() {
             <svg width="32" height="26" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fillRule="evenodd" clipRule="evenodd" d="M27 0C29.7615 0 32 2.23853 32 5V21C32 23.7615 29.7615 26 27 26H5C2.23853 26 0 23.7615 0 21V5C0 2.23853 2.23853 0 5 0H27ZM14.1628 14.2236V17.3333L14.0522 17.2267C12.5811 15.8075 11.0977 14.377 9.68408 13.0288L9.80811 12.908C11.2327 11.5205 12.6982 10.0935 14.1775 8.66663V11.949H22.3157V14.2236H14.1628Z" fill="#FFA800"/>
 </svg>
-                <h3>Обратно</h3>
-                <div className={classValue} onClick={handleClick}></div>
+                <h3 id='Обратно'>Обратно</h3>
+                <div className='train-selection-sidebar-direction-plus' onClick={handleClick}></div>
             </div>
-            <SidebarChoiceTime type='ArrivalHour' classValue={openBlock}></SidebarChoiceTime>
+            <SidebarChoiceTime type='ArrivalHour' className='close'></SidebarChoiceTime>
         </div>
         <div className="train-selection-sidebar-last-places"></div>
         </div>

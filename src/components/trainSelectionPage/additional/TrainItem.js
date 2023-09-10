@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function TrainItem(el) {
 
   const { pointOfDeparture, destination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
-  console.log(el.el.departure.train, 88)
+  //console.log(el.el.departure.train, 88)
 
   const navigate = useNavigate();
 
@@ -37,6 +37,7 @@ export default function TrainItem(el) {
   const handleClickChooseSeats = () => {
     console.log(el.el.departure._id) 
     navigate(`/wagon/${el.el.departure._id}.html`)
+    
   }
 
     return (
