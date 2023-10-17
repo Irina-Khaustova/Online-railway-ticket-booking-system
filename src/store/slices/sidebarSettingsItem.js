@@ -14,6 +14,11 @@ const initialState = {
   priceFrom:"",
   priceTo: "",
   trainsToDrawFiltered: null,
+  seatsDeparture: [],
+  seatsArrival: [],
+  coastDeparture: 0,
+  coastArrival: 0,
+  chooseWagon: null,
 };
 
 export const sidebarSettingsItemSlice = createSlice({
@@ -35,7 +40,58 @@ export const sidebarSettingsItemSlice = createSlice({
       }
       console.log(state.parameters + 12455665599)
          },
+         putTotalCoast: (state, action) => {
+      
+          
+          const arrNew = [];
+    
+          let arr1 = state[action.payload.category];
+          if(arr1) {
+          for(let i=0; i< arr1.length; i +=1) {
+            if(arr1[i].wagon !== action.payload.wagon) {
+              arrNew.push(arr1[i])
+          }
+        }
+      }
+        state[action.payload.category] = arrNew;
+         
+         
+ },
+ putTotalCoast1: (state, action) => {
+  let arr = action.payload.seats;
+  console.log()
+  if(arr) {
+  for(let i=0; i < arr.length; i+=1) {
+    
+  state[action.payload.category].push(arr[i]);
+  state.chooseWagon = action.payload.chooseWagon;  
+  }
+}
+},
+clearSeats: (state) => {
+  state.seatsDeparture = []; 
+  state.seatsArrival = [];
+  },
+   
+putSumm: (state, action) => {
 
+  let arr3 = [];
+  let arr1 = state[action.payload];
+  for(let i=0; i< arr1.length; i+=1) {
+    arr3.push(arr1[i].price)
+  }
+  console.log(arr3)
+  const arr2 = arr3.reduce((summ, current) => {
+    summ += Number(current);
+    return summ;
+  }, 0)
+  console.log(arr2)
+    if(action.payload === 'seatsDeparture') {
+       state.coastDeparture = arr2;
+    } else {
+       state.coastArrival = arr2;  
+    }
+},
   
     putTime: (state, action) => {
       state[action.payload.type] = action.payload.value;
@@ -68,6 +124,10 @@ export const sidebarSettingsItemSlice = createSlice({
 export const {
   putValues,
   putTime,
+   putTotalCoast,
+   putTotalCoast1,
+   putSumm,
+   clearSeats,
 //   deleteProductInBasket,
 //   changeProductInBaslet,
 //   submitForm,

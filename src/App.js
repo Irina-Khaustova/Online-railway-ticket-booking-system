@@ -3,9 +3,10 @@ import "./App.css";
 import MainPage from "./pages/MainPage";
 import TrainSelectionPage from "./pages/TrainSelectionPage";
 import SeatsSelectionPage from "./pages/SeatsSelectionPage";
-import PurchaseConfirmationPage from "./pages/PurchaseConfirmationPage";
+import PaymentPage from "./pages/ PaymentPage";
 import SuccessfullNotificationPage from "./pages/SuccessfulNotificationPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PassengerPage from "./pages/PassengerPage";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <Routes>
         <Route path="/" exact element={<MainPage />} />
         <Route path="/train.html" element={<TrainSelectionPage />} />
-        <Route path="/wagon/:id.html" element={<SeatsSelectionPage/>} />
-        <Route path="/cart.html" element={<PurchaseConfirmationPage/>} />
+        <Route path="/wagon.html" element={<SeatsSelectionPage/>} />
+        <Route path="/payment.html" element={<PaymentPage/>} />
         <Route path="/about.html" element={<SuccessfullNotificationPage/>}/>
+        <Route path="/passenger.html" element={<PassengerPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
     </div>

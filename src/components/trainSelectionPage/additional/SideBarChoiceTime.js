@@ -6,7 +6,11 @@ import Range from "./Range";
 export default function SidebarChoiceTime(props) {
 const dispatch = useDispatch();
 
+const {startDepartureHourFrom, startDepartureHourTo, startArrivalHourFrom, startArrivalHourTo,
+  endDepartureHourFrom, endDepartureHourTo, endArrivalHourFrom, endArrivalHourTo} = useSelector((state) => state.sidebarSettingsItem);
+
 const [] = useState("")
+
 
 
           return (

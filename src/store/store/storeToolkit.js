@@ -7,6 +7,8 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 
 import saga from '../sagas/indexToolkit';
 import trainSelection from '../slices/trainSelection';
+import chooseTrainItem from '../slices/chooseTrainItem';
+import seatsSelection from '../slices/seatsSelection';
 
 const sagaMiddleWare = createSagaMiddleware()
 const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleWare];
@@ -15,6 +17,8 @@ export const store = configureStore({
       trainSelection: trainSelection,
       searchTrainForm: searchTrainForm,
       sidebarSettingsItem: sidebarSettingsItem,
+      chooseTrainItem: chooseTrainItem,
+      seatsSelection: seatsSelection,
       [myApi.reducerPath]: myApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

@@ -7,16 +7,30 @@ import { sidebarSettingsItem } from "../../../store/slices/sidebarSettingsItem";
 
 export default function Range(props) {
 
-    console.log(typeof(props.max), props.max)
+    //console.log(props.type)
+
+    const {startDepartureHourFrom, startDepartureHourTo, startArrivalHourFrom, startArrivalHourTo,
+      endDepartureHourFrom, endDepartureHourTo, endArrivalHourFrom, endArrivalHourTo} = useSelector((state) => state.sidebarSettingsItem);
+
+    let array = [];
+
+    if (props.type === 'startDepartureHour') {
+      array = [startDepartureHourFrom, startDepartureHourTo];
+    } else if (props.type === 'endDepartureHour') {
+      array = [endDepartureHourFrom, endDepartureHourTo];
+    } else if(props.type === 'startArrivalHour') {
+      array = [startArrivalHourFrom, startArrivalHourTo];
+    } else if(props.type === 'endArrivalHour') {
+      array = [endArrivalHourFrom, endArrivalHourTo];
+    }
+
+   // console.log(array)
 
     const add = props.add;
-    const [value, setValue] = useState([0, 24]);   
+    const [value, setValue] = useState(array);   
     const [classCloseBegin, setClassCloseBegin] = useState("") 
     const [classCloseEnd, setClassCloseEnd] = useState("")
     const dispatch = useDispatch();
-
-    const {startDepartureHourFrom, startDepartureHourTo, startArrivalHourFrom, startArrivalHourTo,
-    endDepartureHourFrom, endDepartureHourTo, endArrivalHourFrom, endArrivalHourTo} = useSelector((state) => state.sidebarSettingsItem);
 
     useEffect(() => {
       if (startDepartureHourFrom < 4 || startArrivalHourFrom < 4 )  {
@@ -31,7 +45,7 @@ export default function Range(props) {
       } else {
         setClassCloseEnd('')
       }
-      console.log(classCloseBegin)
+     // console.log(classCloseBegin)
     }, [startDepartureHourFrom, startDepartureHourTo, startArrivalHourFrom, startArrivalHourTo,
         endDepartureHourFrom, endDepartureHourTo, endArrivalHourFrom, endArrivalHourTo])
 

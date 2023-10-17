@@ -1,10 +1,10 @@
 import TrainSelectionPageHeader from "../components/trainSelectionPage/TrainSelectionPageHeader";
-import SeatsSelectionPageMain from "../components/seatsSelection/SeatsSelectionPageMain";
-import TrainSelectionPageSideBar from "../components/trainSelectionPage/TrainSelectionPageSideBar";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import PaymentPageMain from "../components/paymentPage/paymentPageMain";
+import PassengerPageSidebar from "../components/passengerPage/PassengerPageSidebar";
 
-export default function SeatsSelectionPage() {
+export default function PaymentPage() { 
 
   const {chooseTrainItem} = useSelector((state)=> state.chooseTrainItem);
   console.log(chooseTrainItem)
@@ -13,8 +13,8 @@ export default function SeatsSelectionPage() {
       <>
       <TrainSelectionPageHeader/>
       <div className="train-selection-page-content" >
-      <TrainSelectionPageSideBar/>
-      <SeatsSelectionPageMain el={chooseTrainItem}/>
+      <PassengerPageSidebar/>
+      <PaymentPageMain/>
       </div>
            </>
     );

@@ -30,13 +30,6 @@ export default function Input(props) {
   
   console.log(pointOfDeparture + 2)
 
-  // useEffect(() => {
-  //   setValuePointOfDeparture(pointOfDeparture);
-  //   setValueDestination(destination);
-  //   setValueDatePointOfDeparture(datePointOfDeparture);
-  //   setValueDateDestination(dateDestination);
-  // }, [])
-
   const navigate = useNavigate();
  
   const handleClick = (e) => {
