@@ -4,3 +4,4 @@ export default function validationString(value) {
 
      return phoneRegex.test(value);
 }
+

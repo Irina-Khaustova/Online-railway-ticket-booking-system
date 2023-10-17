@@ -131,7 +131,7 @@ const handleClickSeat = (evt) => {
         let newSeatPlace = seatPlace;
         if(childrenWithSeats > 0 && childrenPlaces !== childrenWithSeats) {
           newSeatPlace.push({wagon: item.coach.name, item: evt.target.id, price: priceSeat1/2, child: true})
-          let child = childrenPlaces;
+          let child = childrenPlaces; 
           setChildrenPlaces(child + 1);
         } else {
         newSeatPlace.push({wagon: item.coach.name, item: evt.target.id, price: priceSeat1, child: false})

@@ -10,12 +10,10 @@ export const passengersSlice = createSlice({
   name: "passengers",
   initialState,
    reducers: {
-   putPassenger: (state, action) => {
-    let newPassengers = state.passengers;
-      newPassengers.push(action.payload);
-     
+   putPassengers: (state, action) => {
+   state.passengers = action.payload;
          },
-    putNumberPassengers: (state, action) => {
+         deletePassenger: (state, action) => {
       console.log(action.payload, state[action.payload.category])
       state[action.payload.category] = action.payload.value;
       console.log(state.test)
@@ -31,11 +29,8 @@ export const passengersSlice = createSlice({
 });
 
 export const {
-  putChooseSeat,
-  putTest,
-  putNumberPassengers,
-  putError,
-  clearError
+  putPassengers,
+  deletePassenger,
 } = passengersSlice.actions;
  export const passengers = (state) => state.passengersSlice;
  export default passengersSlice.reducer;

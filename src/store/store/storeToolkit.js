@@ -3,7 +3,8 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import searchTrainForm from '../slices/searchTrainForm';
 import sidebarSettingsItem from '../slices/sidebarSettingsItem';
 import { myApi } from '../slices/MyApi';
-import { setupListeners } from '@reduxjs/toolkit/query'
+import { setupListeners } from '@reduxjs/toolkit/query';
+import  passengers  from '../slices/passengers';
 
 import saga from '../sagas/indexToolkit';
 import trainSelection from '../slices/trainSelection';
@@ -19,6 +20,7 @@ export const store = configureStore({
       sidebarSettingsItem: sidebarSettingsItem,
       chooseTrainItem: chooseTrainItem,
       seatsSelection: seatsSelection,
+      passengers: passengers,
       [myApi.reducerPath]: myApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>

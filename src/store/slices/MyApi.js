@@ -16,8 +16,19 @@ export const myApi = createApi({
     ({
       query: (id) => `routes/${id}/seats`,
     }),
+    putOrder: builder.mutation
+    ({
+      query(data) {
+        const {id, ...body} = data
+        return {
+          url: `/order/${id}`,
+          method: 'POST',
+          body
+        }
+      }
+    }),
   }),
 });
 
 
-export const { useGetCitiesQuery, useGetTrainQuery, useGetWagonQuery } = myApi;
+export const { useGetCitiesQuery, useGetTrainQuery, useGetWagonQuery, usePutOrderMutation } = myApi;

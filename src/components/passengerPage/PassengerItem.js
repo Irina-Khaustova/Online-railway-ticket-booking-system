@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import validationString from "./additionals/validation";
+import { useDispatch } from "react-redux";
+import { putPassengers } from "../../store/slices/passengers";
 
 export default function PassengerItem(props) {
 
@@ -16,6 +18,14 @@ export default function PassengerItem(props) {
     const [validFirstName, setValidFirstName] = useState(false);
     const [validLastName, setValidLastName] = useState(false);
     const [validPatronymic, setValidPatronymic] = useState(false);
+    const [isChild, setIsChild] = useState(true);
+    const [includeChild, setIncludeChild] = useState(false);
+    const [gender, setGender] = useState(true);
+    const [document, setDocument] = useState('Паспорт')
+
+    const [passengers, setPassengers] = useState([]);
+
+    const dispatch = useDispatch();
 
     const handleClickOpen = (evt) => {
       if(evt.currentTarget.className === 'passenger-number-button-hidden') {
@@ -31,10 +41,33 @@ export default function PassengerItem(props) {
 
     } 
 
+    useEffect(() => {
+      if(validFirstName) {
+        let newArr = passengers;
+        passengers.push({
+          "person_info": {
+            "is_adult": true,
+            "first_name": {firstName},
+            "last_name": {lastName},
+            "patronymic": {patronymic},
+            "gender": {gender},
+            "birthday": "1980-01-01",
+            "document_type": {document},
+            "document_data": "45 6790195"
+          },
+          "seat_number": 10,
+          "is_child": {isChild},
+          "include_children_seat": {includeChild}
+        })
+      setPassengers(newArr);
+      dispatch(putPassengers(passengers));
+      }
+    },[validFirstName])
+
     const handleChangeValue = (evt) => {
      if(evt.target.name === 'firstName') {
       setFirstName(evt.target.value)
-      validationString(evt.target.value)
+      setValidFirstName(validationString(evt.target.value))
      } else if(evt.target.name === 'lastName') {
       setLastName(evt.target.value)
      } else if(evt.target.name === 'patronymic') {
@@ -42,15 +75,35 @@ export default function PassengerItem(props) {
      } else if(evt.target.name === 'passportSeries') {
       setPassportSeries(evt.target.value) 
      } else if(evt.target.name === 'dateOfBirth') {
+      console.log(evt.target.value)
       setDateOfBirth(evt.target.value) 
      }
       console.log()
+    }
+
+    const handleChangeIsAdult = (evt) => {
+      if(evt.target.value === 'Детский') {
+      setIsChild(true);
+      setIncludeChild(false);
+      } else {
+        setIsChild(false);
+        setIncludeChild(true);
+      }
+    }
+
+    const handleChangeDocument = (evt) => {
+      setDocument(evt.target.value);
     }
 
     const handleCklickGender  = (evt) => {
       evt.target.parentNode.firstChild.className = 'gender-button';
       evt.target.parentNode.lastChild.className = 'gender-button';
       evt.target.className = 'gender-button active';
+      if(evt.target.id === 'man') {
+        setGender(true)
+      } else {
+        setGender(false)
+      }
     }
  
       return (
@@ -64,10 +117,9 @@ export default function PassengerItem(props) {
             </div>
             <div className={classDisplay}>
             <div className="passenger-item-item-container">
-            <select className="passenger-page-input" defaultValue={'Взрослый'}>
+            <select className="passenger-page-input" onChange={handleChangeIsAdult} defaultValue={'Взрослый'}>
               <option value="value1">Детский</option>
-              <option value="value2">Взрослый</option>
-              <option value="value3">Детский без места</option>
+              <option value="value2" selected >Взрослый</option>
             </select>
             <div className="full-name-container">
             <label className="input-container">
@@ -104,7 +156,7 @@ export default function PassengerItem(props) {
             <div className="passenger-documents-container">
             <label className="input-documents-container"> 
             <span className="name-label">Тип документа</span>  
-            <select className="input-documents-set" id="document">
+            <select className="input-documents-set" onChange={handleChangeDocument} id="document">
               <option value="value2" selected>Паспорт</option>
               <option value="value3">Свидетельство о рождении</option>
             </select>

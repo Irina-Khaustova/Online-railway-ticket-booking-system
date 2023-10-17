@@ -49,7 +49,8 @@ export default function PaymentPageMain() {
     }
  
       return (
-        <div className="payment-item-container">
+              <div className="payment-item-containers">
+              <div className="payment-item-container">
           <div className="passenger-number-container">
             <div className="passenger-number-text">Персональные данные</div>
             </div>
@@ -103,6 +104,10 @@ export default function PaymentPageMain() {
             </div>
             </div>
             
+        </div>
+        <div className="passenger-main-button-next-container">
+                <div className="seats-selection-button-next">Купить билеты</div>
+        </div>
         </div>
       );
     }

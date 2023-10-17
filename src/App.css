@@ -2004,7 +2004,6 @@ margin-right: 17%;
 }
 .passenger-page-sidebar-header {
   height: 108px;
-   padding: 25px;
   border-bottom: 1px solid #E5E5E5; 
   line-height: 108px;
 }
@@ -2098,7 +2097,7 @@ margin-right: 17%;
 
 .passengers-container {
   border-bottom: 1px solid #E5E5E5; 
-  padding: 25px;
+  padding: 0 25px 25px 25px;
 }
 
 .passengers {
