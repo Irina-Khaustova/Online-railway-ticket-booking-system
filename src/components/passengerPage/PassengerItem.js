@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import validationString from "./additionals/validation";
 import { useDispatch } from "react-redux";
-import { putPassengers } from "../../store/slices/passengers";
+import { putNumbers , putValid, putisValid} from "../../store/slices/passengers";
 
 export default function PassengerItem(props) {
 
-    const {classN, id}  = props; 
+    const { id}  = props; 
 
     const [classButton, setClassButton] = useState('passenger-number-button-hidden')
     const [classDisplay, setClassDisplay] = useState('passengers-information-display-none')
+    const [classButtonNext, setClassButtonNext] = useState('seats-selection-button-next gray')
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -41,30 +42,30 @@ export default function PassengerItem(props) {
 
     } 
 
+    const validDate = (date) => {
+      const datenow = new Date();
+      console.log(datenow)
+      const dateIsValid = 1
+    }
+
     useEffect(() => {
-      if(validFirstName) {
-        let newArr = passengers;
-        passengers.push({
-          "person_info": {
-            "is_adult": true,
-            "first_name": {firstName},
-            "last_name": {lastName},
-            "patronymic": {patronymic},
-            "gender": {gender},
-            "birthday": "1980-01-01",
-            "document_type": {document},
-            "document_data": "45 6790195"
-          },
-          "seat_number": 10,
-          "is_child": {isChild},
-          "include_children_seat": {includeChild}
-        })
-      setPassengers(newArr);
-      dispatch(putPassengers(passengers));
-      }
-    },[validFirstName])
+      
+        const stringRegex = /^[а-яА-Я]+$/;
+        
+        console.log()
+        if(stringRegex.test(firstName) && stringRegex.test(lastName) && stringRegex.test(patronymic) ) {
+            console.log('good')
+            //valid(id, true)
+        } else {
+            //valid(id, false)
+            console.log(55)
+
+        }
+      //dispatch(putPassengers(passengers));
+    },[firstName, lastName, patronymic, dateOfBirth, passportSeries])
 
     const handleChangeValue = (evt) => {
+      const stringRegex = /^[а-яА-Я]+$/;
      if(evt.target.name === 'firstName') {
       setFirstName(evt.target.value)
       setValidFirstName(validationString(evt.target.value))
@@ -72,6 +73,8 @@ export default function PassengerItem(props) {
       setLastName(evt.target.value)
      } else if(evt.target.name === 'patronymic') {
       setPatronymic(evt.target.value) 
+      dispatch(putValid({id: id, status: stringRegex.test(evt.target.value)}))
+      dispatch(putisValid())
      } else if(evt.target.name === 'passportSeries') {
       setPassportSeries(evt.target.value) 
      } else if(evt.target.name === 'dateOfBirth') {
@@ -104,6 +107,25 @@ export default function PassengerItem(props) {
       } else {
         setGender(false)
       }
+    }
+
+    const handleClickbutton = () => {
+      passengers.push({
+        "person_info": {
+          "is_adult": true,
+          "first_name": {firstName},
+          "last_name": {lastName},
+          "patronymic": {patronymic},
+          "gender": {gender},
+          "birthday": "1980-01-01",
+          "document_type": {document},
+          "document_data": "45 6790195"
+        },
+        "seat_number": 10,
+        "is_child": {isChild},
+        "include_children_seat": {includeChild}
+      })
+      console.log(new Date())
     }
  
       return (
@@ -171,7 +193,7 @@ export default function PassengerItem(props) {
             </label>
             </div>
             <div className="button-next-container">
-                <button className="button-next-passenger">Следующий пассажир</button>
+                <button className="button-next-passenger" onClick={handleClickbutton}>Следующий пассажир</button>
             </div>
             </div>
         </div>

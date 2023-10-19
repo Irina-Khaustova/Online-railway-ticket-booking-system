@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePutOrderMutation } from "../../store/slices/MyApi";
+import { putUser } from "../../store/slices/passengers";
+import { useDispatch } from "react-redux";
+import validationString from "../passengerPage/additionals/validation";
+import { validationTel } from "../passengerPage/additionals/validation";
+import { useNavigate } from "react-router-dom";
 
 export default function PaymentPageMain() {
 
 
-    const [classButton, setClassButton] = useState('passenger-number-button-hidden')
+    const [classButton, setClassButton] = useState('seats-selection-button-next gray')
     const [classDisplay, setClassDisplay] = useState('passengers-information-display-none')
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [patronymic, setPatronymic] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [passportSeries, setPassportSeries] = useState('');
-    const [stateForm, setStateForm] = useState({firstName: '', lastName: ''});
+    const [telephone, setTelephone] = useState('');
+    const [eMail, setEMail] = useState('');
+    const [payMethod, setPayMethod] = useState('');
+    const [user, setUser] = useState('');
+    const [checkOnline, setCheckOnline] = useState(false);
+    const [checkCash, setCheckCash] = useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleClickOpen = (evt) => {
       if(evt.currentTarget.className === 'passenger-number-button-hidden') {
@@ -22,6 +34,22 @@ export default function PaymentPageMain() {
         setClassDisplay('passengers-information-display-none') 
       }
     } 
+    
+    useEffect(() => {
+        const phoneRegex =/(\d?)(\d{3})(\d{3})(\d{2})(\d{2})/g;
+        const stringRegex = /^[а-яА-Я]+$/;
+        const eMailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu
+        console.log(phoneRegex.test())
+        if(phoneRegex.test(telephone) && stringRegex.test(firstName) && stringRegex.test(lastName) && stringRegex.test(patronymic) && eMailRegex.test(eMail)) {
+            console.log(telephone + 'good')
+            setClassButton('seats-selection-button-next orange')
+        } else {
+
+        setClassButton('seats-selection-button-next gray')
+        }
+       
+    },[firstName,lastName,patronymic,telephone,eMail, checkCash, checkOnline])
+    
 
     const handleClickClose = () => {
 
@@ -34,20 +62,53 @@ export default function PaymentPageMain() {
       setLastName(evt.target.value)
      } else if(evt.target.name === 'patronymic') {
       setPatronymic(evt.target.value) 
-     } else if(evt.target.name === 'passportSeries') {
-      setPassportSeries(evt.target.value) 
-     } else if(evt.target.name === 'dateOfBirth') {
-      setDateOfBirth(evt.target.value) 
+     } else if(evt.target.name === 'telephone') {
+        setTelephone(evt.target.value)
+        
+        console.log(telephone)
+     }else if(evt.target.name === 'eMail') {
+        setEMail(evt.target.value)
      }
       console.log()
     }
 
-    const handleCklickGender  = (evt) => {
-      evt.target.parentNode.firstChild.className = 'gender-button';
-      evt.target.parentNode.lastChild.className = 'gender-button';
-      evt.target.className = 'gender-button active';
+
+
+    const handleClickPay  = (evt) => {
+      if(evt.target.className === 'seats-selection-button-next orange') {
+        setUser({"user": {
+            "first_name": {firstName},
+            "last_name": {lastName},
+            "patronymic": {patronymic},
+            "phone": {telephone},
+            "email": {eMail},
+            "payment_method": {payMethod}
+          }})
+        dispatch(putUser(user))
+        navigate('/about.html')
+      }
     }
- 
+
+    const handleChangeCheckbox = (evt) => {
+        if(evt.target.className === 'checkbox online') {
+            setCheckCash(false)
+          if(checkOnline === true) {
+             setCheckOnline(false);
+        } else {
+            setCheckOnline(true);
+            setPayMethod('online') 
+        }
+       }
+       if(evt.target.className === 'checkbox cash') {
+        setCheckOnline(false);
+        if(checkCash === true) {  
+           setCheckCash(false);
+        } else {
+            setCheckCash(true);
+            setPayMethod('cash') 
+        }
+        }
+    }
       return (
               <div className="payment-item-containers">
               <div className="payment-item-container">
@@ -74,21 +135,22 @@ export default function PaymentPageMain() {
             <div className="payment-documents-container">
             <label className="input-documents-container"> 
             <span className="name-label">Контактный телефон</span>  
-            <input className='passenger-page-input'value={passportSeries} name='passportSeries' onChange={handleChangeValue} type="text"/>
+            <input className='passenger-page-input'value={telephone} name='telephone'  required onChange={handleChangeValue} type="tel"/>
             </label>
             </div>
             <div className="payment-documents-container">
             <label className="input-documents-container">
 	           <span className="name-label">E-mail</span>
-	           <input className='passenger-page-input'value={passportSeries} name='passportSeries' onChange={handleChangeValue} type="text"/>
+	           <input className='passenger-page-input'value={eMail} name='eMail' onChange={handleChangeValue} type="text"/>
             </label>
             </div>
             <div className="passenger-number-container">
             <div className="passenger-number-text">Способ оплаты</div>
             </div>
+            <div className="checked-container">
             <div className="payment-method-container">
             <div className="check-online-cash">
-               <input className="checkbox" type="checkbox"></input>
+               <input className="checkbox online" type="checkbox" checked={checkOnline} onChange={handleChangeCheckbox}></input>
                <div className="">Онлайн</div>
             </div>
             <div className="online-methods-container">
@@ -99,14 +161,15 @@ export default function PaymentPageMain() {
             </div>
             <div className="payment-method-cash-container">
             <div className="check-online-cash">
-               <input className="checkbox" type="checkbox"></input>
+               <input className="checkbox cash" type="checkbox" checked={checkCash} onChange={handleChangeCheckbox}></input>
                <div className="">Наличными</div>
+            </div>
             </div>
             </div>
             
         </div>
         <div className="passenger-main-button-next-container">
-                <div className="seats-selection-button-next">Купить билеты</div>
+                <div className={classButton} onClick={handleClickPay}>Купить билеты</div>
         </div>
         </div>
       );

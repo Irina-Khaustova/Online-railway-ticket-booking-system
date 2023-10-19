@@ -1,3 +1,7 @@
+import TrainSelectionPageHeader from "../components/trainSelectionPage/TrainSelectionPageHeader";
+import PassengerPageSidebar from "../components/passengerPage/PassengerPageSidebar";
+import SuccessfulNotificationPageMain from "../components/successfulNotificationPage/SuccessfulNotificationPageMain";
+
 export default function SuccessfulNotificationPage() {
    // const dispatch = useDispatch();
   //   useEffect(() => {
@@ -6,6 +10,11 @@ export default function SuccessfulNotificationPage() {
   //   }, []);
     return (
       <>
+      <TrainSelectionPageHeader/>
+      <div className="train-selection-page-content" >
+      <PassengerPageSidebar/>
+      <SuccessfulNotificationPageMain/>
+      </div>
       </>
     );
   }

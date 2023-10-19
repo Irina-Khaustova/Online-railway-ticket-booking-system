@@ -21,7 +21,7 @@ export const myApi = createApi({
       query(data) {
         const {id, ...body} = data
         return {
-          url: `/order/${id}`,
+          url: `/order`,
           method: 'POST',
           body
         }

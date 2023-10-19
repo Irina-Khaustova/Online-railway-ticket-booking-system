@@ -1747,9 +1747,16 @@ margin-right: 17%;
   color: rgba(255, 255, 255, 1);
   font-size: 24px;
   font-weight: 700;
-  background-color: rgba(255, 168, 0, 1);
   border: none;
   padding: 16px 70px;
+}
+
+.gray {
+  background-color: rgba(146, 143, 148, 1);
+}
+
+.orange {
+  background-color: rgba(255, 168, 0, 1);
 }
 
 .wagons-names-item-choose {
@@ -1782,7 +1789,7 @@ margin-right: 17%;
 }
 
 .passenger-item-item-container {
-  padding: 38px;
+  padding: 38px 25px 38px 25px;
   border-bottom: 1px solid rgba(146, 143, 148, 1);
 }
 
