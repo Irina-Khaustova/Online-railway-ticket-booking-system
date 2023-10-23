@@ -188,7 +188,7 @@ const handleClickPageTranslation = (evt) => {
             </div>
           </div>
           <div className="train-selection-page-mane search-train-container">
-            { trains? trains.map((el, i) => <TrainItem className="" key ={i} el={el}></TrainItem>): null}
+            { trains? trains.map((el, i) => <TrainItem className="" button="trainSelectionPageMain" key ={i} el={el}></TrainItem>): null}
           </div>
           <div className="train-selection-page-mane slider-container">
             {pageNumber.length > 2 ? <><div className="page-number-item-img" id='left' onClick={handleClickPageTranslation}>

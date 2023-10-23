@@ -9,6 +9,25 @@ const initialState = {
   isValid: false,
 };
 
+// {'id': i, 'status': false, 
+//       'passenger': {
+//         "coach_id": "",
+//         "person_info": {
+//           "is_adult": '',
+//           "first_name": "",
+//           "last_name": "",
+//           "patronymic": "",
+//           "gender": null,
+//           "birthday": "",
+//           "document_type": "",
+//           "document_data": ""
+//         },
+//         "seat_number": null,
+//         "is_child": null,
+//         "include_children_seat": null
+//       }
+    
+//     }
 
 export const passengersSlice = createSlice({
   name: "passengers",
@@ -18,14 +37,17 @@ export const passengersSlice = createSlice({
         console.log(25, action.payload)
         state.numberPassengers = action.payload.passengers;
         state.validSet = action.payload.arrValid
-
+        state.isValid = false
               },
-   putPassengers: (state, action) => {
-   state.passengers = action.payload.passengers;
-   const arr = [];
-   for(let i=1; i < action.payload; i+=1) {
-    arr.push({})
-   }
+   changePassenger: (state, action) => {
+     const arr = state.validSet;
+     console.log(arr)
+     for(let i=0; i < arr.length; i+=1) {
+        if(arr[i].id === action.payload.id) {
+            state.validSet[i].passenger = action.payload.passenger
+        }
+   //state.validSet =arr;
+     }
    },
    putValid: (state, action) => {
     console.log(action.payload + 666666)
@@ -36,7 +58,7 @@ export const passengersSlice = createSlice({
             arr[i].status = action.payload.status;
         } 
     }
-    state.validSet = arr; 
+    
 },
   putisValid: (state, action) => {
     
@@ -58,7 +80,8 @@ export const passengersSlice = createSlice({
  },
    
    putUser: (state, action) => {
-      state.user = action.payload;
+    console.log(action.payload)
+      state.user = action.payload.user;
    },
    deletePassenger: (state, action) => {
       console.log(action.payload, state[action.payload.category])
@@ -76,7 +99,7 @@ export const passengersSlice = createSlice({
 });
 
 export const {
-  putPassengers,
+  changePassenger,
   deletePassenger,
   putUser,
   putNumbers,

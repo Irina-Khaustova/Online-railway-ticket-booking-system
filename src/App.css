@@ -10,6 +10,10 @@
   font-weight: 700;
 }
 
+input {
+  padding: 0 10px 0 10px;
+}
+
 h2 {
   font-style: normal;
   font-weight: 500;
@@ -837,6 +841,7 @@ z-index: 2;
   border: 1px solid #C4C4C4;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   margin-bottom: 47px;
+  position: relative;
 }
 
 .train-direction-container {
@@ -1166,7 +1171,7 @@ z-index: 2;
   display: flex;
   flex-direction: row;
   padding: 20px 45px 20px 35px;
-  align-items: start;
+  align-items:flex-start;
   width: 90%;
 }
 
@@ -1839,7 +1844,7 @@ margin-right: 17%;
 }
 
 .passenger-number-text {
-  margin-left: 15px;
+
 }
 
 .passenger-number-button-close {
@@ -1926,9 +1931,25 @@ margin-right: 17%;
   align-items: center;
 }
 
-.checkbox {
-  zoom: 2;
+.checkbox, .checkbox-active {
+  zoom: 2.8;
   margin-right: 20px;
+  color: orange;
+}
+
+.checkbox-active::before {
+  width: 12.8px;
+  height: 12.8px;
+  display: block; 
+  content: '';
+  z-index: -2;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 168, 0, 1);
+  border-radius: 2px;
+  background-image: url(./img/svg/checkChekbox.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgba(244, 242, 246, 1);
 }
 
 .passenger-documents-container {
@@ -1971,8 +1992,9 @@ margin-right: 17%;
 }
 
 .input-documents-set {
-  width: 205px;
+  
   height: 50px;
+  padding: 0 30px 0 10px;
 }
 
 .error-red {
@@ -2068,7 +2090,7 @@ margin-right: 17%;
 .text-block-end {
   display: flex;
    flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   width: 100%;
   align-items: center;
   margin-bottom: 45px;
@@ -2139,21 +2161,26 @@ margin-right: 17%;
   height: 1072px;
   border: 1px solid rgba(196, 196, 196, 1);
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.paiment-main-container {
+  padding: 25px;
+  border-bottom: 1px solid rgba(196, 196, 196, 1);
 }
 
 .payment-names-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 
 .payment-documents-container {
-  padding: 0 25px 0 25px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(196, 196, 196, 1);
 }
 
 .payment-names-input {
@@ -2161,6 +2188,14 @@ margin-right: 17%;
   height: 50px;
   border: 1px solid rgba(146, 143, 148, 1);
   border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.payment-name-label {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(41, 41, 41, 1);
+  margin-bottom: 5px;
 }
 
 .payment-method-container {
@@ -2177,16 +2212,25 @@ margin-right: 17%;
   display: flex;
   flex-direction: row;
   height: 170px;
+  padding: 25px;
 }
 
 .check-online-cash {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.payment-checkbox-text {
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(146, 143, 148, 1)
 }
 
 
 .online-methods-container {
   margin-top: 45px;
+  padding-left: 10px;
 }
 
 .online-methods-item {
@@ -2196,6 +2240,7 @@ margin-right: 17%;
   width: 240px;
 }
 
+
 .false {
   border: 1px solid red;
 }
@@ -2203,4 +2248,302 @@ margin-right: 17%;
 .false:active{
   border: 1px solid red;
 
+}
+
+.order-confirmation-container {
+  width: 960px;
+
+}
+
+.order-confirmation-train {
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px 0px #0000004D;
+  height: 450px;
+  margin-bottom: 45px;
+}
+
+.order-confirmation-passengers {
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px 0px #0000004D;
+  height: 750px; 
+}
+
+.order-confirmation-train-title-container {
+  height: 95px;
+   border-bottom: 1px solid #C4C4C4;
+}
+
+.order-confirmation-train-inform-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.order-confirmation-train-main-inform {
+  height: 355px;
+  width: 197px;
+  background: #E4E0E9;
+}
+
+.order-confirmation-train-detailed-inform-date {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+.order-confirmation-train-detailed-inform-date-departure {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+  width: 100%;
+  height: 177px;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.item-date {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.item-town {
+  font-size: 16px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.item-railway-station {
+  font-size: 16px;
+  color: #928F94;
+}
+
+.item-duration {
+  color: #928F94;
+  font-size: 18px;
+}
+
+.order-confirmation-train-container, .order-confirmation-passengers-container{
+  border: 1px solid #C4C4C4;
+}
+
+.order-confirmation-passengers-container{
+  margin-top: 35px;
+}
+
+.order-confirmation-train-container  > .train-item{
+  margin-bottom: 0;
+}
+
+
+
+.succesful-page-change-button {
+  width: 233px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  position: absolute;
+}
+
+.button-train {
+  bottom: 25px;
+  right: 25px;
+}
+
+.button-cost {
+  bottom: 25px;
+  left: 25px;
+}
+
+
+.payment-error-container-hidden {
+  display: none;
+}
+
+.payment-error-container-displayed {
+
+}
+
+.succesful-confirmation-passengers-container {
+  width: 960px;
+  border: 1px solid #C4C4C4;
+  box-shadow: 0px 2px 2px 0px #0000004D;
+  margin-top: 45px;
+}
+
+.succesful-passengers-container {
+  width: 678px;
+  padding-top: 30px;
+  border-right: 1px solid rgba(229, 229, 229, 1);
+}
+
+.passengers-information-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.succesful-passenger-item-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(229, 229, 229, 1);
+  padding: 35px 25px 35px
+}
+
+.succesful-passenger-number-container {
+  margin-bottom: 15px;
+}
+
+.succesful-type-container {
+  margin-right: 35px;
+}
+
+.succesful-passenger-text {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(41, 41, 41, 1);
+}
+
+.succesful-confirmation-passengers-item-container {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.succesful-confirmation-passenger {
+  margin-bottom: 15px;
+}
+
+.succesful-confirmation-passengers-item-container > .text-gray {
+  color: rgba(146, 143, 148, 1);
+}
+
+.succesful-cost-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 25px 100px 25px;
+  position: relative;
+  width: 280px;
+  box-sizing: border-box;
+}
+
+.succesful-cost {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.succesful-cost-item-text {
+  font-size: 30px;
+  font-weight: 400;
+  color: rgba(41, 41, 41, 1)
+}
+
+.succesful-cost-item-number {
+  font-size: 30px;
+  font-weight: 700;
+  color: rgba(41, 41, 41, 1)
+}
+
+.order-confirmation-payment-method-container {
+  margin-top: 60px;
+}
+
+.passenger-number-method {
+  height: 146px;
+}
+
+.passenger-number-method {
+  position: relative;
+}
+
+.button-payment-method {
+  bottom: 30px;
+  right: 25px;
+}
+
+.passenger-number-method-text {
+  padding: 45px 25px 15px 25px;
+  font-size: 24px;
+  font-weight: 400;
+  color: rgba(41, 41, 41, 1);
+}
+
+/* OrderCompletedPage */
+
+.order-completed-page-container {
+  height: 834px;
+  background-image: url("../src/img/orderCompletedPageImg.png");
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.order-completed-page-main-container {
+  height: 1080px;
+}
+
+.order-completed-page-main-items {
+  width: 1406px;
+  position: absolute;
+  top: 700px;
+  left: 50%;
+  margin-left: -703px;
+  border: 1px solid rgba(196, 196, 196, 1);
+}
+
+.order-completed-page-main-icons-container {
+  display: flex;
+  flex-direction: row;
+  height: 312px;
+  background-color: rgba(244, 243, 246, 1);
+  padding: 40px 325px 40px 325px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.order-completed-page-main-icons-item {
+  width: 208px;
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.order-completed-page-main-icons-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-text {
+  line-height: 21px;
+  margin: 0;
+}
+
+.order-completed-page-main-user-container {
+  height: 492px;
+  padding: 95px 205px 95px 205px;
+  background-color: white;
+  color: rgba(41, 41, 41, 1);
+}
+
+.user-name {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.user-text-complet {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 90px;
+}
+
+.user-text-thanks {
+  font-size: 24px;
+  font-weight: 700;
 }

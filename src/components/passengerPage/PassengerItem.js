@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
-import validationString from "./additionals/validation";
-import { useDispatch } from "react-redux";
-import { putNumbers , putValid, putisValid} from "../../store/slices/passengers";
+import validation from "./additionals/validation";
+import { useDispatch, useSelector } from "react-redux";
+import { putNumbers , putValid, putisValid, changePassenger} from "../../store/slices/passengers";
 
 export default function PassengerItem(props) {
 
-    const { id}  = props; 
+    const {el}  = props; 
 
+    console.log(el.passenger.document_data)
     const [classButton, setClassButton] = useState('passenger-number-button-hidden')
     const [classDisplay, setClassDisplay] = useState('passengers-information-display-none')
     const [classButtonNext, setClassButtonNext] = useState('seats-selection-button-next gray')
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [patronymic, setPatronymic] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [passportSeries, setPassportSeries] = useState('');
+    const docPassSer = el.passenger.document_type === 'Паспорт'? el.passenger.document_data.series: '';
+    const docPassNum = el.passenger.document_type === 'Паспорт'? el.passenger.document_data.number: '';
+    const docSertif = el.passenger.document_type === 'Свидетельство о рождении'? el.passenger.document_data.series: '';
+
+    const {seatsDeparture, seatsArrival, chooseWagon} = useSelector(state => state.sidebarSettingsItem);
+    console.log(docPassSer, docPassNum, docSertif)
+
+    const [firstName, setFirstName] = useState(el.passenger.first_name);
+    const [lastName, setLastName] = useState(el.passenger.last_name);
+    const [patronymic, setPatronymic] = useState(el.passenger.patronymic);
+    const [dateOfBirth, setDateOfBirth] = useState(el.passenger.birthday);
+    const [passportSeries, setPassportSeries] = useState(docPassSer);
+    const [passportNumber, setPassportNumber] = useState(docPassNum);
+    const [sertificateNumber, setSertificateNumber] = useState(docSertif);
     const [validFirstName, setValidFirstName] = useState(false);
     const [validLastName, setValidLastName] = useState(false);
     const [validPatronymic, setValidPatronymic] = useState(false);
+    const [validPassportSeries, setValidPassportSeries] = useState(false);
+    const [validPassportNumber, setValidPassportNumber] = useState(false);
+    const [validSertificateNumber, setValidSertificateNumber] = useState(false);
     const [isChild, setIsChild] = useState(true);
     const [includeChild, setIncludeChild] = useState(false);
     const [gender, setGender] = useState(true);
     const [document, setDocument] = useState('Паспорт')
+    const [documentNumber, setDocumentNumber] = useState('')
 
     const [passengers, setPassengers] = useState([]);
 
@@ -50,38 +64,97 @@ export default function PassengerItem(props) {
 
     useEffect(() => {
       
-        const stringRegex = /^[а-яА-Я]+$/;
-        
-        console.log()
-        if(stringRegex.test(firstName) && stringRegex.test(lastName) && stringRegex.test(patronymic) ) {
-            console.log('good')
-            //valid(id, true)
-        } else {
-            //valid(id, false)
-            console.log(55)
+      setValidFirstName(validation('string', firstName));
+      setValidLastName(validation('string', lastName));
+      setValidPatronymic(validation('string', patronymic));
+      setValidPassportSeries(validation('passportSeries', passportSeries));
+      setValidPassportNumber(validation('passportNumber', passportNumber));
+      setValidSertificateNumber(validation('sertificateNumber', sertificateNumber));
 
+        const validDocument = document === 'Паспорт'? validPassportNumber : validSertificateNumber;
+        const validPassport = document === 'Паспорт'? validPassportSeries : true;
+        const docementData = document === 'Паспорт'? {series: passportSeries, number: passportNumber}: {series: sertificateNumber, number: ''};
+        console.log(validDocument, validPassport, validFirstName, validLastName, validPatronymic)
+
+        if(validFirstName && validLastName && validPatronymic && validDocument && validPassport) {
+            console.log('good')
+            dispatch(putValid({id: el.id, status: true}))
+            dispatch(putisValid())
+               dispatch(changePassenger({'id': el.id, 
+      'passenger': {
+        "is_adult": {},
+        "first_name": firstName,
+        "last_name": lastName,
+        "patronymic": `${patronymic}`,
+        "gender": `${gender}`,
+        "birthday": `${dateOfBirth}`,
+        "document_type": `${document}`,
+        "document_data": docementData
+      , 
+      "seat_number": 10,
+      "is_child": isChild,
+      "include_children_seat": {includeChild}
+    }}))
+        } else {
+          dispatch(putValid({id: el.id, status: false}))
+          dispatch(putisValid())
+            console.log(55)
+ 
         }
       //dispatch(putPassengers(passengers));
-    },[firstName, lastName, patronymic, dateOfBirth, passportSeries])
+    },[validFirstName,validLastName,validPatronymic ,firstName, lastName, patronymic, sertificateNumber, passportNumber, passportSeries, validPassportNumber, validPassportSeries, validSertificateNumber])
 
     const handleChangeValue = (evt) => {
-      const stringRegex = /^[а-яА-Я]+$/;
+      // const stringRegex = /^[а-яА-Я]+$/;
+      // const passportSeriesRegex = /^([0-9]{2}\s{1}[0-9]{2})?$/;
+      // const passportNumberRegex = /^([0-9]{6})?$/;
+      // const sertificateNumberRegex = /^([IVX]{3}[-]{1}[а-яА-Я]{2}[-]{1}[0-9]{6})?$/;
+      // const a = stringRegex.test(evt.target.value);
+      // const b = passportSeriesRegex.test(evt.target.value);
+      // const c = passportNumberRegex.test(evt.target.value);
+      // const d = sertificateNumberRegex.test(evt.target.value);
+       
      if(evt.target.name === 'firstName') {
       setFirstName(evt.target.value)
-      setValidFirstName(validationString(evt.target.value))
+      setValidFirstName(validation('string', evt.target.value))
+      console.log(validFirstName)
      } else if(evt.target.name === 'lastName') {
       setLastName(evt.target.value)
+      setValidLastName(validation('string', evt.target.value));
      } else if(evt.target.name === 'patronymic') {
       setPatronymic(evt.target.value) 
-      dispatch(putValid({id: id, status: stringRegex.test(evt.target.value)}))
-      dispatch(putisValid())
+      setValidPatronymic(validation('string', evt.target.value));
      } else if(evt.target.name === 'passportSeries') {
-      setPassportSeries(evt.target.value) 
+      setPassportSeries(evt.target.value);
+      setValidPassportSeries(validation('passportSeries', evt.target.value));
+      console.log(passportSeries, validPassportSeries)
+    } else if(evt.target.name === 'passportNumber') {
+      setPassportNumber(evt.target.value);
+      setValidPassportNumber(validation('passportNumber', evt.target.value));
+    } else if(evt.target.name === 'sertificateNumber') {
+      setSertificateNumber(evt.target.value);
+      setValidSertificateNumber(validation('sertificateNumber', evt.target.value));
+      console.log(validSertificateNumber + 357)
      } else if(evt.target.name === 'dateOfBirth') {
-      console.log(evt.target.value)
-      setDateOfBirth(evt.target.value) 
+      setDateOfBirth(evt.target.value);
+      
      }
-      console.log()
+    //   dispatch(changePassenger({'id': id, 'passenger': 
+    //  {"coach_id": "",
+    //   "person_info": {
+    //     "is_adult": {},
+    //     "first_name": {firstName},
+    //     "last_name": {lastName},
+    //     "patronymic": {patronymic},
+    //     "gender": {gender},
+    //     "birthday": {dateOfBirth},
+    //     "document_type": {document},
+    //     "document_data": {}
+    //   }, 
+    //   "seat_number": 10,
+    //   "is_child": {isChild},
+    //   "include_children_seat": {includeChild}
+    // }}))
     }
 
     const handleChangeIsAdult = (evt) => {
@@ -133,7 +206,7 @@ export default function PassengerItem(props) {
           <div className="passenger-number-container">
             <div className="passenger-number-block">
             <button className={classButton} onClick={handleClickOpen}></button>
-            <div className="passenger-number-text">Пассажир {id}</div>
+            <div className="passenger-number-text">Пассажир {el.id}</div>
             </div>
             <div className="passenger-number-button-close" onClick={handleClickClose}></div>
             </div>
@@ -183,14 +256,19 @@ export default function PassengerItem(props) {
               <option value="value3">Свидетельство о рождении</option>
             </select>
             </label>
-            <label className="input-documents-container">
+            {document === 'Паспорт'? <><label className="input-documents-container">
 	           <span className="name-label">Серия</span>
-	           <input className='passenger-page-input'value={passportSeries} name='passportSeries' onChange={handleChangeValue} type="text"/>
+	           <input className='passenger-page-input'value={passportSeries} name='passportSeries' onChange={handleChangeValue} type="text" placeholder="__ __  __ __"/>
             </label>
+            
             <label className="input-documents-container">
-	           <span className="name-label">Паспорт</span>
-	           <input className='passenger-page-input' type="text"/>
-            </label>
+	           <span className="name-label">Номер</span>
+	           <input className='passenger-page-input' value={passportNumber} name='passportNumber' onChange={handleChangeValue} type="text" placeholder="__ __ __ __ __ __"/>
+            </label></>: 
+            <label className="input-documents-container">
+            <span className="name-label">Номер</span>
+            <input className='passenger-page-input' value={sertificateNumber} name='sertificateNumber' onChange={handleChangeValue} type="text" placeholder="ххх-хх-хххххх"/>
+           </label>}
             </div>
             <div className="button-next-container">
                 <button className="button-next-passenger" onClick={handleClickbutton}>Следующий пассажир</button>

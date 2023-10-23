@@ -13,6 +13,7 @@ const handleClick = (evt) => {
   if(evt.target.className === "off") {
     setSelect("train-selection-sidebar-railway-carriage-item-slider slider-off");
     dispatch(putValues({type: props.id, meaning: false}))
+    dispatch()
     console.log(44)
   }
   if(evt.target.className === "on") {

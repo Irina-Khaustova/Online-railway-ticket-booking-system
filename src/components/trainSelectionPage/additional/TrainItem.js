@@ -5,8 +5,12 @@ import { putChooseTrainItem } from "../../../store/slices/chooseTrainItem";
 
 export default function TrainItem(el) {
 
+  //const {el, button} = props;
+
   const { pointOfDeparture, destination, trainSelection, className} = useSelector((state) => state.searchTrainForm);
   console.log(el)
+
+
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -169,7 +173,8 @@ export default function TrainItem(el) {
 <path d="M89.955 17.0709C89.955 17.7223 89.955 18.3486 89.955 18.9999C83.9616 18.9999 77.9933 18.9999 72 18.9999C72 18.3486 72 17.7348 72 17.0709C77.9683 17.0709 83.9366 17.0709 89.955 17.0709Z" fill="#C4C4C4"/>
 </svg>
                   </div>
-                  <button className="choice-seats-button" onClick={handleClickChooseSeats} >Выбрать места</button>
+                  {el.button === 'trainSelectionPageMain'? <button className="choice-seats-button" onClick={handleClickChooseSeats} >Выбрать места</button> : 
+                  <button className="succesful-page-change-button button-train">Изменить</button>}
                 </div>
             </div>
             </div>

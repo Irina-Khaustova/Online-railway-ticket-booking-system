@@ -1,6 +1,6 @@
 export default function Flight() {
     return (
-        <div className="train-item">
+        <div className="flight">
           
           <div className="train-number-container">
             <div className="">

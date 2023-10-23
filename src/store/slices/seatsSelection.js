@@ -32,7 +32,6 @@ export const seatsSelectionSlice = createSlice({
       console.log(state.test)
     },
     putError: (state, action) => {
-      console.log(action.payload)
           state[action.payload.error] = action.payload.class + '-active'  
  },
     clearError: (state, action) => {
