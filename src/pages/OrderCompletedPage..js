@@ -3,11 +3,7 @@ import OrderCompletedPageHeader from "../components/orderCompletedPage/OrderComp
 import OrderCompletedPageMain from "../components/orderCompletedPage/OrderCompletedPageMain.js";
 
 export default function OrderCompletedPage() {
-   // const dispatch = useDispatch();
-  //   useEffect(() => {
-  //     dispatch(putInputValue(""));
-  //     // eslint-disable-next-line
-  //   }, []);
+  
     return (
       <>
       <OrderCompletedPageHeader></OrderCompletedPageHeader>
