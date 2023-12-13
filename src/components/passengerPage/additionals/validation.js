@@ -1,4 +1,6 @@
 export default function validation(type, value) {
+
+      if (value === '') return false;
     
       const stringRegex = /^[а-яА-Я]+$/;
       const passportSeriesRegex = /^([0-9]{2}\s{1}[0-9]{2})?$/;

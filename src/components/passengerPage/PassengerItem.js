@@ -69,7 +69,10 @@ export default function PassengerItem(props) {
       setValidPatronymic(validation('string', patronymic));
       setValidPassportSeries(validation('passportSeries', passportSeries));
       setValidPassportNumber(validation('passportNumber', passportNumber));
+      console.log(passportNumber, validPassportNumber, validation('passportNumber', 1))
       setValidSertificateNumber(validation('sertificateNumber', sertificateNumber));
+      
+      console.log(document)
 
         const validDocument = document === 'Паспорт'? validPassportNumber : validSertificateNumber;
         const validPassport = document === 'Паспорт'? validPassportSeries : true;

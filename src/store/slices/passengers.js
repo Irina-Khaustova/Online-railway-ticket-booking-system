@@ -62,8 +62,9 @@ export const passengersSlice = createSlice({
 },
   putisValid: (state, action) => {
     
-    state.isValid = true
+    
     const arr2 =state.validSet;
+    if(arr2.length > 0) {state.isValid = true}
     console.log(arr2)
       arr2.forEach((el) => {
         if(el.status === false) {

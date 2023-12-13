@@ -90,7 +90,7 @@ console.log(newarr, a)
       setclassN(newClass)
       setArrValid(arrNew)
       console.log(newarr,arrValid)
-      if(!validSet) {
+      if(validSet.length === 0) {
       dispatch(putNumbers({passengers: passengers, arrValid: newarr}))
       } 
   },[])

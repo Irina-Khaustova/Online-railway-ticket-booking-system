@@ -12,7 +12,7 @@ export default function PersonalInformationPage() {
     
     return (
       <>
-      <TrainSelectionPageHeader/>
+      <TrainSelectionPageHeader order='personal-information-page'/>
       <div className="train-selection-page-content" >
       <TrainSelectionPageSideBar/>
       <PersonalInformationPageMain/>

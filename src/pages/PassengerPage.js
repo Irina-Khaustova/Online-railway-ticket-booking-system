@@ -11,7 +11,7 @@ export default function PassengerPage() {
     
     return (
       <>
-      <TrainSelectionPageHeader/>
+      <TrainSelectionPageHeader step={{step1: 'step-orange', step2: 'step-orange', step3: '', step4: ''}}/>
       <div className="train-selection-page-content" >
       <PassengerPageSidebar/>
       <PassengerPageMain/>

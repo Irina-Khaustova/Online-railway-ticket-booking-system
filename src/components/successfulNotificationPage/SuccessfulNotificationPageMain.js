@@ -31,14 +31,14 @@ export default function SuccessfulNotificationPageMain() {
             return {
               "coach_id": "string",
               "person_info": {
-                "is_adult": true,
-                "first_name": "string",
-                "last_name": "string",
-                "patronymic": "string",
-                "gender": true,
-                "birthday": "string",
-                "document_type": "string",
-                "document_data": "string"
+                "is_adult": el.passenger.is_adult,
+                "first_name": el.passenger.first_name,
+                "last_name": el.passenger.last_name,
+                "patronymic": el.passenger.patronymic,
+                "gender": el.passenger.gender,
+                "birthday": el.passenger.birthday,
+                "document_type": el.passenger.document_type,
+                "document_data": el.passenger.document_data
               },
               "seat_number": 0,
               "is_child": true,
@@ -49,26 +49,33 @@ export default function SuccessfulNotificationPageMain() {
         },
         "arrival": {
           "route_direction_id": "string",
-          "seats": [
-            {
+          "seats": validSet.map( el => {
+            return {
               "coach_id": "string",
               "person_info": {
-                "is_adult": true,
-                "first_name": "string",
-                "last_name": "string",
-                "patronymic": "string",
-                "gender": false,
-                "birthday": "string",
-                "document_type": "string",
-                "document_data": "string"
+                "is_adult": el.passenger.is_adult,
+                "first_name": el.passenger.first_name,
+                "last_name": el.passenger.last_name,
+                "patronymic": el.passenger.patronymic,
+                "gender": el.passenger.gender,
+                "birthday": el.passenger.birthday,
+                "document_type": el.passenger.document_type,
+                "document_data": el.passenger.document_data
               },
               "seat_number": 0,
               "is_child": true,
               "include_children_seat": true
             }
-          ]
+          
+        })
         }
       }
+
+      const data1 = {
+        'ffggf': 'gdggduy',
+        'dh': 'diuuiu',
+      }
+      console.log(typeof(data))
 
     const [putOrder, result] = usePutOrderMutation()
 
@@ -91,13 +98,13 @@ export default function SuccessfulNotificationPageMain() {
 
 
 
-    const handleClick  = (evt) => {
-      putOrder(`${data}`)
+    const handleClickChangeTrain  = (evt) => {
+      navigate('/train.html');
     }
 
-    const handleClickConfirm = (evt) => {
-        
-     
+    const handleClickConfirm = (evt) => { 
+      putOrder(data)
+      console.log(result)
     }
       return (
         <div className="order-confirmation-container">
@@ -105,7 +112,7 @@ export default function SuccessfulNotificationPageMain() {
         <div className="passenger-number-container">
             <div className="passenger-number-text">Поезд</div>
             </div>
-        <TrainItem el={chooseTrainItem} click={handleClick}></TrainItem>  
+        <TrainItem el={chooseTrainItem} click={handleClickChangeTrain}></TrainItem>  
         
         </div> 
         <div className='succesful-confirmation-passengers-container'>

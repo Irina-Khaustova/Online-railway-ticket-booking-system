@@ -20,6 +20,14 @@ const dispatch = useDispatch();
 const [passengers, setPassengers] = useState(0);
 const [childrenWithSeats, setChildrenWithSeats] = useState(0);
 const [childrenPlaces, setChildrenPlaces] = useState(0);
+const [top, setTop] = useState(null);
+const [bottom, setBottom] = useState(null);
+const [topSeats, setTopSeats] = useState(null);
+const [bottomSeats, setBottomSeats] = useState(null);
+const [seatPlace, setSeatPlace] = useState([])
+const [wifiPrice, setWifiPrice] = useState(0);
+const [linensIncludedPrice, setLinensIncludedPrice] = useState(0);
+const [arrSeats, setArrSeats] = useState(null);
 
 const {adultsArrival, childrenWithSeatArrival, adultsDeparture, childrenWithSeatDeparture} = useSelector(state => state.seatsSelection);
 
@@ -38,11 +46,13 @@ useEffect(() => {
   setPassengers(adults + childrenWithSeats);
 },[adultsArrival, adultsDeparture, childrenWithSeatArrival, childrenWithSeatDeparture, childrenWithSeats, adults, category])
 
+
+useEffect(()=> {
 for (let i=0; i<item.seats.length; i+=1) {
   arr.push(item.seats[i].index)
 }
-          let priceTop = item.coach.top_price;
-          let priceBottom = item.coach.bottom_price;
+setArrSeats(arr)
+console.log(arr)
           let price;
           let top1 = 0;
           let bottom1 = 0;
@@ -74,7 +84,11 @@ for (let i=0; i<item.seats.length; i+=1) {
         }
       
       }
+      setTop(top1);
+      setBottom(bottom1);
+      setTopSeats(topSeats1)
 
+    },[item])
       const [priceSeat, setPriceSeat]  = useState(0)
 
       let price1 = 0;
@@ -94,13 +108,7 @@ for (let i=0; i<item.seats.length; i+=1) {
         setPriceSeat(price1)
       },[])
 
-      const [top, setTop] = useState(top1);
-const [bottom, setBottom] = useState(bottom1);
-const [topSeats, setTopSeats] = useState(topSeats1);
-const [bottomSeats, setBottomSeats] = useState(bottomSeats1) ;
-const [seatPlace, setSeatPlace] = useState([])
-const [wifiPrice, setWifiPrice] = useState(0);
-const [linensIncludedPrice, setLinensIncludedPrice] = useState(0);
+      
 
 const handleClickSeat = (evt) => {
   console.log(passengers, adultsDeparture)
@@ -110,10 +118,10 @@ const handleClickSeat = (evt) => {
        let priceSeat1 = priceSeat + wifiPrice + linensIncludedPrice;
         if(item.coach.class_type === 'third'|| item.coach.class_type === 'second') {
           if(topSeats.includes(Number(evt.target.id))) {
-            priceSeat1 = priceTop + wifiPrice + linensIncludedPrice;
+            priceSeat1 = item.coach.top_price + wifiPrice + linensIncludedPrice;
             
           } else {
-            priceSeat1 = priceBottom + wifiPrice + linensIncludedPrice;
+            priceSeat1 = item.coach.bottom_price + wifiPrice + linensIncludedPrice;
             
           } 
           
@@ -230,7 +238,7 @@ const handleClickSeat = (evt) => {
        
         <div className="seats-selection-page-wagon-information">
           <div className="seats-selection-page-wagon-item information-container">
-            <p className="wagon-number">{item.coach.name}</p>
+            <p className="wagon-number">{item.coach.name.replace(/[^0-9]/g,"")}</p>
             <p className="wagon-text"> вагон</p>
             </div>
           <div className="seats-selection-page-wagon-item information-seats">
@@ -299,9 +307,9 @@ const handleClickSeat = (evt) => {
             </div>
         </div>
        </div>
-       {item.coach.class_type === 'first'? <WagonSchemeFrstClass seats={arr} click={handleClickSeat}></WagonSchemeFrstClass > : item.coach.class_type === 'second'? 
-       <WagonSchemeSecondClass seats={arr} click={handleClickSeat}></WagonSchemeSecondClass>: item.coach.class_type === 'third'? 
-       <WagonSchemeThirdClass seats={arr} click={handleClickSeat}></WagonSchemeThirdClass>: <WagonSchemeFourthClass seats={arr} click={handleClickSeat}></WagonSchemeFourthClass>} 
+       {item.coach.class_type === 'first'? <WagonSchemeFrstClass seats={arrSeats? arrSeats: []} click={handleClickSeat}></WagonSchemeFrstClass > : item.coach.class_type === 'second'? 
+       <WagonSchemeSecondClass seats={arrSeats? arrSeats: []} click={handleClickSeat}></WagonSchemeSecondClass>: item.coach.class_type === 'third'? 
+       <WagonSchemeThirdClass seats={arrSeats? arrSeats: []} click={handleClickSeat}></WagonSchemeThirdClass>: <WagonSchemeFourthClass seats={arrSeats? arrSeats: []} click={handleClickSeat}></WagonSchemeFourthClass>} 
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useState } from "react";
 import SidebarChoiceTime from "./additional/SideBarChoiceTime";
 import SidebarSettingsItem from "./additional/SidebarSettingsItem";
 import Range from "./additional/Range";
+import { useSelector } from "react-redux";
 
 
 export default function TrainSelectionPageSideBar() {
@@ -10,6 +11,7 @@ export default function TrainSelectionPageSideBar() {
   const [classValueFrom, setClassValueFrom] = useState("train-selection-sidebar-direction-plus");
   const [openBlockTo, setOpenBlockTo] = useState("close");
   const [openBlockFrom, setOpenBlockFrom] = useState("close");
+  const {datePointOfDeparture, dateDestination} = useSelector(state => state.searchTrainForm);
 
   const handleClick = (evt) => {
     const element = evt.target.previousSibling.value
@@ -28,12 +30,12 @@ export default function TrainSelectionPageSideBar() {
         <div className="train-selection-sidebar-settings">
           <div className="train-selection-sidebar-date-form train-selection-sidebar-item">
             <h3 className="train-selection-sidebar">Дата поездки</h3>
-            <input className="train-selection-sidebar-date-form-input" type="date"></input>
+            <input className="train-selection-sidebar-date-form-input" type="date" value={datePointOfDeparture}></input>
             <h3 className="train-selection-sidebar">Дата возвращения</h3>
-            <input className="train-selection-sidebar-date-form-input" type="date"></input>
+            <input className="train-selection-sidebar-date-form-input" type="date" value={dateDestination}></input>
           </div>
           <div className="train-selection-sidebar-railway-carriage train-selection-sidebar-item">
-            <SidebarSettingsItem type="Купе" id="have_second_сlass">
+            <SidebarSettingsItem type="have_first_сlass" id="have_second_сlass">
             <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fillRule="evenodd" clipRule="evenodd" d="M1.53491 0H15.4651C16.3093 0 17 0.695465 17 1.54544V15.4546C17 16.3045 16.3093 17 15.4651 17H1.53491C0.690674 17 0 16.3045 0 15.4546V1.54544C0 0.695465 0.690674 0 1.53491 0ZM13.1243 2.125C12.7021 2.125 12.3567 2.47272 12.3567 2.89774V4H15.2922V2.89774C15.2922 2.47272 14.947 2.125 14.5249 2.125H13.1243ZM15.2922 5H12.3567V10.0454C12.3567 10.4705 12.7021 10.8182 13.1243 10.8182H14.5249C14.947 10.8182 15.2922 10.4705 15.2922 10.0454V5ZM4.54736 4V2.97501C4.54736 2.51135 4.16357 2.125 3.70312 2.125H2.45605C1.99561 2.125 1.61182 2.51135 1.61182 2.97501V4H4.54736ZM1.61182 5H4.54736V9.98749C4.54736 10.4511 4.16357 10.8375 3.70312 10.8375H2.45605C1.99561 10.8375 1.61182 10.4511 1.61182 9.98749V5ZM15.2349 16.7296C16.0405 16.7296 16.7122 16.0727 16.7122 15.242V12.4796H0.287842V15.242C0.287842 16.0534 0.940186 16.7296 1.76514 16.7296H15.2349Z" fill="#E5E5E5"/>
 </svg>

@@ -144,10 +144,11 @@ a {
   display: block;
   position: absolute;
   top: 72px;
-  z-index: 10;
+  z-index: 4;
   width: 326px;
   box-sizing: border-box;
   background-color: #FFFFFF;
+  
 }
 
 .point-of-departure-menu-active {
@@ -308,8 +309,8 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
+
 
 .how-its-works-picture-text {
   text-align: center;
@@ -512,6 +513,7 @@ position: relative;
 background-image: url("../src/img/455f149d5f9743f2b028fa407e8d4464.png");
 background-repeat: no-repeat;
 background-size: cover;
+z-index: 1;
 }
 
 .train-selection-page-container .search-form-button {
@@ -537,7 +539,6 @@ background-size: cover;
   flex-direction: column;
   top: 270px;
   height: 350px;
-  
 }
 
 .train-selection-search-form-container {
@@ -556,7 +557,7 @@ background-size: cover;
   flex-direction: row;
   justify-content: space-between;
   padding: 30px 45px 0 45px;
-  z-index: 2;
+  z-index: 15;
   box-sizing: border-box;
   height: 150px;;
   margin-bottom: 35px;
@@ -591,11 +592,8 @@ z-index: 2;
   margin-top: 45px;
 }
 
-.triangle-orange {
-  border: 50px solid transparent;
-  border-left: 50px solid #FFA800;
-  position: absolute;
-  right: -100px;
+.triangle-step-none {
+  display: none;
 }
 
 .order-steps-container {
@@ -606,14 +604,57 @@ z-index: 2;
   background-color: #2D2B2F;
   display: flex;
   flex-direction: row;
+  z-index: 3;
 }
 
 .order-steps-item {
   position: relative;
+  border: 50px solid transparent;
+  z-index: 2;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.triangle-step-orange {
+  border: 50px solid transparent;
+  border-left: 38px solid #FFA800;
+  position: absolute;
+  left: -50px;
+  z-index: -10;
+  top: -50px;
+}
+
+.triangle-step-orange::after, .triangle-step-gray::after {
+  content: '';
+  width: 50px;
+  height: 100px;
+  background-image: url(../src/img/svg/mark\ right.svg);
+  position: absolute;
+  z-index: -10;
+  background-repeat: no-repeat;
+  top: -50px;
+  right: -13px;
+}
+
+.triangle-step-gray {
+  border: 50px solid transparent;
+  border-left: 40px solid #2D2B2F;
+  position: absolute;
+  left: -50px;
+  z-index: -10;
+  top: -50px;
 }
 
 .step-orange {
   background-color: #FFA800;
+}
+
+.step-gray {
+  background-color: #2D2B2F;
 }
 
 .step-1, .step-4{
@@ -626,6 +667,42 @@ z-index: 2;
 
 .order-step {
   height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: 'Roboto';
+  justify-content: center;
+  
+}
+
+.order-step-circle {
+  width: 56px;
+  height: 56px;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  line-height: 53px;
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  
+}
+
+.order-step-text-container {
+  display: flex;
+  flex-direction: row;
+  width: 350px;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-step-text {
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: 28px;
 }
 
 .train-selection-page-content {
@@ -637,12 +714,15 @@ z-index: 2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
+  z-index: 20;
 }
 
 .train-selection-sidebar-container {
   display: block;
   width: 360px;
   background-color: #3E3C41;
+  padding-bottom: 0;
 }
 
 .train-selection-sidebar-settings {
@@ -953,12 +1033,17 @@ z-index: 2;
   right: 0;
 }
 
+.choice-seats-container {
+  margin-top: 20px;
+}
+
 .choice-seats-button {
   background-color: #FFA800;
   color: white;
   font-size: 24px;
   font-weight: 700;
   text-align: center;
+  margin-top: 80px;
 }
 
 .range {
@@ -1086,6 +1171,11 @@ z-index: 2;
   margin-left: 20px;
 }
 
+.arrival {
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
 .seats-selection-page-item-about-train {
   display: flex;
   flex-direction: row;
@@ -1105,11 +1195,17 @@ z-index: 2;
 .direction-duration {
   display: flex;
   flex-direction: row;
-  
+  justify-content: center;
+  align-items: center;
 }
 
 .direction-duration-information {
   width: 180px;
+  margin-left: 15px;
+}
+
+.direction-duration-information-text {
+  margin: 0;
 }
 
 .directions-information {
@@ -2106,6 +2202,7 @@ margin-right: 17%;
   font-size: 24px;
   font-weight: 700;
   color: #FFFFFF;
+  text-align: end;
 }
 
 .point {
@@ -2479,8 +2576,36 @@ margin-right: 17%;
   background-size: cover;
 }
 
+
 .order-completed-page-main-container {
   height: 1080px;
+}
+
+.order-completed-header-container {
+  height: 148px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  justify-content: space-between;
+  padding: 0 80px 0 80px;
+  align-items: center;
+}
+
+.order-completed-order-number {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.order-completed-order-text-gray {
+  font-size: 36px;
+  font-weight: 400;
+  color: rgba(146, 143, 148, 1);
+  margin-right: 10px;
+}
+
+.order-completed-order-cost {
+  display: flex;
+  flex-direction: row;
 }
 
 .order-completed-page-main-items {
@@ -2501,6 +2626,7 @@ margin-right: 17%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .order-completed-page-main-icons-item {
@@ -2510,6 +2636,8 @@ margin-right: 17%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 250px;
+  justify-content: space-between;
 }
 
 .order-completed-page-main-icons-item-text {
@@ -2517,6 +2645,7 @@ margin-right: 17%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 
 .item-text {
@@ -2526,9 +2655,10 @@ margin-right: 17%;
 
 .order-completed-page-main-user-container {
   height: 492px;
-  padding: 95px 205px 95px 205px;
+  padding: 95px 205px 0 205px;
   background-color: white;
   color: rgba(41, 41, 41, 1);
+  box-sizing: border-box;
 }
 
 .user-name {
@@ -2546,4 +2676,37 @@ margin-right: 17%;
 .user-text-thanks {
   font-size: 24px;
   font-weight: 700;
+}
+
+.order-completed-page-main-footer {
+  background-color: rgba(255, 168, 0, 0.88);
+  display: flex;
+  flex-direction: row;
+  height: 160px;
+  padding: 0px 80px 0px 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-on-main-page {
+  height: 60px;
+  width: 340px;
+  background-color: rgba(255, 168, 0, 0.88);
+  border: 1px solid rgba(62, 60, 65, 1);
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.grade-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.grade-text {
+  height: 24px;
+  font-size: 24px;
+  font-weight: 400; 
+  margin-right: 15px;
 }

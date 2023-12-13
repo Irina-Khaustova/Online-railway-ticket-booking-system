@@ -82,7 +82,7 @@ useEffect(() => {
       dispatch(clearError({error: 'errorSeats', class: 'seats-selection-page-item-error'}))
     }
 
-    console.log(wagonsDrawn, wagons)
+    console.log(category)
 
   return (
 
@@ -92,10 +92,13 @@ useEffect(() => {
         <div className="">Введите количество пассажиров!</div>
         <button className="close-error" onClick={handleClickCloseError}>Понятно</button>
       </div>
-        <div className="seats-selection-page-item-header">
-        <svg width="76" height="60" viewBox="0 0 76 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className={`seats-selection-page-item-header ${category.toLowerCase()}`}>
+        {category === 'Departure' ? <svg width="76" height="60" viewBox="0 0 76 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M5 0C2.23877 0 0 2.23859 0 5V55C0 57.7614 2.23877 60 5 60H71C73.7612 60 76 57.7614 76 55V5C76 2.23859 73.7612 0 71 0H5ZM42.3628 32.8239V40C45.9434 36.6445 49.5586 33.2558 53 30.0664C49.5239 26.7774 45.9434 23.3887 42.3281 20V27.5747H23V32.8239H42.3628Z" fill="#FFA800"/>
-    </svg>
+    </svg>: <svg width="76" height="60" viewBox="0 0 76 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M71 0C73.7612 0 76 2.23859 76 5V55C76 57.7614 73.7612 60 71 60H5C2.23877 60 0 57.7614 0 55V5C0 2.23859 2.23877 0 5 0H71ZM33.6372 32.8239V40C30.0566 36.6445 26.4414 33.2558 23 30.0664C26.4761 26.7774 30.0566 23.3887 33.6719 20V27.5747H53V32.8239H33.6372Z" fill="#FFA800"/>
+</svg>
+}
         <button className="seats-selection-page-choice-another-train-button">Выбрать другой поезд</button>
         </div>
         <div className="seats-selection-page-item-about-train">
@@ -118,7 +121,7 @@ useEffect(() => {
         
             <div className="train-direction-item">
                 <div className="train-direction-item-section item-from">
-                  <p className="date">{new Date(chooseTrainItem[direction].from.datetime/1000).toLocaleDateString()}</p>
+                  <p className="date">{new Date(chooseTrainItem[direction].from.datetime*1000).toLocaleDateString()}</p>
                   <p className="city">{chooseTrainItem[direction].from.city.name}</p>
                   <p className="station">{chooseTrainItem[direction].from.railway_station_name + ' вокзал'}</p>
                 </div>
@@ -131,7 +134,7 @@ useEffect(() => {
                   </div>
                 </div>
                 <div className="train-direction-item-section item-to">
-                <p className="date">{new Date(chooseTrainItem[direction].to.datetime/1000).toLocaleDateString()}</p>
+                <p className="date">{new Date(chooseTrainItem[direction].to.datetime*1000).toLocaleDateString()}</p>
                   <p className="city">{chooseTrainItem[direction].to.city.name}</p>
                   <p className="station">{chooseTrainItem[direction].to.railway_station_name + ' вокзал'}</p>
                 </div>
@@ -142,8 +145,8 @@ useEffect(() => {
 <path d="M15.3296 14.3923C17.3571 13.4947 19.1476 12.6762 20.9381 11.8842C21.2278 11.7522 21.5174 11.5146 21.8071 11.541C22.2284 11.5674 22.6233 11.805 23.0446 11.937C22.8603 12.333 22.8077 12.9138 22.4917 13.0722C21.4648 13.6795 20.3589 14.1547 19.3056 14.6563C17.989 15.2899 16.6725 15.9499 15.3559 16.5571C14.171 17.1116 13.5917 16.7684 13.5654 15.5011C13.5391 12.6762 13.5127 9.85136 13.5917 7.02647C13.5917 6.63046 14.1447 6.23445 14.4343 5.83844C14.7503 6.23445 15.3033 6.60406 15.3033 7.00007C15.3822 9.37614 15.3296 11.7522 15.3296 14.3923Z" fill="#FFA800"/>
 </svg>
 <div className="direction-duration-information">
-    <p className="">{convertHour(chooseTrainItem[direction].duration)}</p>
-    <p className="">{convertMinuts(chooseTrainItem[direction].duration)}</p>
+    <p className="direction-duration-information-text">{convertHour(chooseTrainItem[direction].duration)}</p>
+    <p className="direction-duration-information-text">{convertMinuts(chooseTrainItem[direction].duration)}</p>
 </div>
         </div>
        </div>
@@ -230,7 +233,7 @@ useEffect(() => {
         <div className="wagons-names-container">
           <span className="">Вагоны</span>
           <div className="wagons-names">
-            {wagonsNames.map((el) => (<div className={el.class} key={el.name} id={el.name}>{el.name}</div>))}
+            {wagonsNames.map((el) => (<div className={el.class} key={el.name} id={el.name}>{el.name.replace(/[^0-9]/g,"")}</div>))}
           </div>
           </div>
           <span className="">Нумерация вагонов начинается с головы поезда</span>

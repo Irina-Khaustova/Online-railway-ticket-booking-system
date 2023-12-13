@@ -10,7 +10,7 @@ export default function SuccessfulNotificationPage() {
   //   }, []);
     return (
       <>
-      <TrainSelectionPageHeader/>
+      <TrainSelectionPageHeader order='successful-notification-page'/>
       <div className="train-selection-page-content" >
       <PassengerPageSidebar/>
       <SuccessfulNotificationPageMain/>

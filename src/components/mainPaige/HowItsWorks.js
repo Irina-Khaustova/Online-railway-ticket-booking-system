@@ -1,3 +1,5 @@
+import Icon from "../../icon";
+
 
 export default function HowItsWorks() {
     return (
@@ -13,6 +15,7 @@ export default function HowItsWorks() {
 <circle cx="81" cy="81" r="81" fill="#E5E5E5" fillOpacity="0.2"/>
 <path fillRule="evenodd" clipRule="evenodd" d="M81 149.097C118.213 149.097 148.381 118.93 148.381 81.7168C148.381 44.5036 118.213 14.3363 81 14.3363C43.7868 14.3363 13.6195 44.5036 13.6195 81.7168C13.6195 118.93 43.7868 149.097 81 149.097ZM87.8829 109.11V102.336H90.3625H110.883C115.97 102.294 118.621 99.6358 118.621 94.4916V55.31C118.621 50.1658 115.97 47.4651 110.883 47.4651H51.0744C46.1153 47.4651 43.3793 50.1658 43.3793 55.1385V94.7488C43.3793 99.55 46.1153 102.294 50.9034 102.379H71.8514H74.0317V109.281H67.4908V115.969H94.5521V109.11H87.8829ZM50.3904 54.4526H111.738V95.3061H50.3904V54.4526Z" fill="white"/>
 </svg>
+<Icon color='none' name="how-its-works-pictures-1"></Icon>
 <div className="how-its-works-picture-text">Удобный заказ на сайте</div>
 </div>
 <div className="how-its-works-pictures-item">

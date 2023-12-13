@@ -15,7 +15,7 @@ for (let i=1; i<=31; i+=2) {
   sort(i, block2, seats);
 }
 
-console.log()
+console.log(seats, block1, block2)
 
 
     return (

@@ -2,9 +2,7 @@ import { useNavigate} from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import { useState,useEffect } from "react";
 import { putSearchFormValues,putTest } from "../../store/slices/searchTrainForm";
-import { searchTrainForm } from "../../store/slices/searchTrainForm";
 import { useGetCitiesQuery, useGetTrainQuery } from "../../store/slices/MyApi";
-import { myApi } from "../../store/slices/MyApi";
 
 export default function Input(props) {
 
@@ -24,13 +22,18 @@ export default function Input(props) {
   const [valueDestination,setValueDestination] = useState(destination);
   const [valueDatePointOfDeparture, setValueDatePointOfDeparture] = useState(datePointOfDeparture);
   const [valueDateDestination, setValueDateDestination] = useState(dateDestination);
-  const [classNamePointOfDeparture, setClassNamePointOfDeparture] = useState('point-of-departure-menu-active');
-  const [classNameDestination, setClassNameDestination] = useState('destination-menu-active');
+  const [classNamePointOfDeparture, setClassNamePointOfDeparture] = useState('point-of-departure-menu');
+  const [classNameDestination, setClassNameDestination] = useState('destination-menu');
 
   
   console.log(pointOfDeparture + 2)
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+
+  },[])
+
  
   const handleClick = (e) => {
     e.preventDefault();
@@ -62,7 +65,7 @@ const handleChangePointOfDeparture = (evt) => {
     destination: valueDestination,
     datePointOfDeparture: valueDatePointOfDeparture,
     dateDestination: valueDateDestination,
-    trainSelection: '',
+    trainSelection: `from_city_id=${cityPointOfDeparture}&to_city_id=${cityDestination}`,
   }))
 }
 
@@ -75,7 +78,7 @@ const handleChangeDestination = (evt) => {
     destination: valueDestination,
     datePointOfDeparture: valueDatePointOfDeparture,
     dateDestination: valueDateDestination,
-    trainSelection: '',
+    trainSelection: `from_city_id=${cityPointOfDeparture}&to_city_id=${cityDestination}`,
   }))
 }
 
@@ -144,11 +147,3 @@ const handleBlur = () => {
         </>
       )    
     }
-    
-  //   return (
-        
-  //     <div className={classContainer}>
-  //       <input type={type} className={classInput} name={name}></input>
-  //       <input type={type} className={classInput}></input>
-  //     </div>
-  //  )   

@@ -1,7 +1,11 @@
+import { useState } from "react";
 import Menu from "../mainPaige/Menu";
 //import MyImage from "../../img/455f149d5f9743f2b028fa407e8d4464.png";
 import TrainSelectionSearchForm from "./TrainSelectionSearchForm";
-export default function TrainSelectionPageHeader() {
+export default function TrainSelectionPageHeader(props) {
+
+  const {step} = props;
+
   return (
     <>
       <div className="container train-selection-page-container">
@@ -10,26 +14,41 @@ export default function TrainSelectionPageHeader() {
         
           <TrainSelectionSearchForm/>
         <div className="order-steps-container">
-        <div className="order-steps-item step-1 step-orange">
+        <div className={`order-steps-item step-1 ${step.step1? step.step1: 'step-gray'}`}>
+         
             <div className="order-step">
-            <div className="triangle-orange"></div>
+              <div className="order-step-text-container">
+              <div className="order-step-circle">1</div>
+              <span className="order-step-text">Билеты</span>
+              </div>
             </div>
         </div>
-        <div className="order-steps-item step-2">
-            <div className="order-step"> 
-            <svg width="38" height="99" viewBox="0 0 38 99" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M1 1L36.6208 48.1734C37.4353 49.2521 37.4279 50.7422 36.6027 51.8128L1 98" stroke="#E5E5E5" strokeLinecap="round" strokeLinejoin="round"/>
-</svg>
+        <div className={`order-steps-item step-2 ${step.step2? step.step2: 'step-gray'}`}>
+        <div className={`triangle-${step.step1? step.step1: 'step-gray'}`}></div>
+        <div className="order-step">
 
+              <div className="order-step-text-container">
+              <div className="order-step-circle">2</div>
+              <span className="order-step-text">Пассажиры</span>
+              </div>
             </div>
         </div>
-        <div className="order-steps-item step-3">
-            <div className="order-step"> 
-            <div className="triangle-orange"></div>
+        <div className={`order-steps-item step-3 ${step.step3? step.step3: 'step-gray'}`}>
+        <div className={`triangle-${step.step2? step.step2: 'step-gray'}`}></div>
+        <div className="order-step">
+              <div className="order-step-text-container">
+              <div className="order-step-circle">3</div>
+              <span className="order-step-text">Оплата</span>
+              </div>
             </div>
         </div>
-        <div className="order-steps-item step-4">
-            <div className="order-step"> 
+        <div className={`order-steps-item step-4 ${step.step4? step.step4: 'step-gray'}`}>
+        <div className={`triangle-${step.step3? step.step3: 'step-gray'}`}></div>
+        <div className="order-step">
+              <div className="order-step-text-container">
+              <div className="order-step-circle">4</div>
+              <span className="order-step-text">Проверка</span>
+              </div>
             </div>
         </div>
         </div>

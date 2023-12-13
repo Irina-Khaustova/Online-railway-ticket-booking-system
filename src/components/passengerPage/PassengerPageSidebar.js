@@ -17,6 +17,20 @@ export default function PassengerPageSidebar() {
       evt.target.className = 'passenger-page-sidebar-direction-minus';
       evt.target.parentNode.nextSibling.className ='passenger-page-sidebar-item-main';
     }
+
+   
+}
+const convert = (x) => {
+  const milliseconds = x*1000;
+  const seconds = Math.floor((milliseconds/1000) % 60);
+  const minutes = Math.floor((milliseconds /1000 /60) % 60);
+  const hours = Math.floor((milliseconds /1000 / 60 / 60) % 60);
+
+return [
+  hours.toString().padStart(2, "0"),
+  minutes.toString().padStart(2, "0"),
+].join(":");
+
 }
   
       return (
@@ -41,19 +55,19 @@ export default function PassengerPageSidebar() {
      <div className="passenger-page-sidebar-item-main">
        <div className="number-of-train-container text-block">
          <p className="text-think">№ Поезда</p>
-          <p className="text-bold"> {chooseTrainItem.departure.train.name}</p>
+          <p className="text-bold"> {chooseTrainItem.departure.train.name.replace(/[^0-9]/g,"")}</p>
          </div>
        <div className="name-of-train-container text-block-name">
          <p className="text-think"> Название</p>
-          <p className="text-bold"> {chooseTrainItem.departure.train.name}</p>
+          <p className="text-bold"> {chooseTrainItem.departure.from.city.name} <br/> {chooseTrainItem.departure.to.city.name}</p>
          </div>
        <div className="number-of-train-container text-block-end">
          <p className="text-bold"></p>
          </div>
         <div className="number-of-train-container text-block">
-         <p className="time-begin text-bold"> 10:30</p>
+         <p className="time-begin text-bold"> {new Date(chooseTrainItem.departure.from.datetime*1000).toLocaleDateString()}</p>
           <div className="duration">
-           <div className="text-think">длительность</div>
+           <div className="text-think">{convert(chooseTrainItem.departure.duration)}</div>
           <div className="text-think">text-think</div>
           </div>
           <p className="time-end text-bold"> 10:30</p>

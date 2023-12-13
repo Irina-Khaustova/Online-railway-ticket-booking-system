@@ -10,7 +10,7 @@ export default function TrainSelectionPage() {
     // }, []);
     return (
       <>
-      <TrainSelectionPageHeader/>
+      <TrainSelectionPageHeader step={{step1: 'step-orange', step2: '', step3: '', step4: ''}}/>
       <div className="train-selection-page-content" >
       <TrainSelectionPageSideBar/>
       <TrainSelectionPageMain/>

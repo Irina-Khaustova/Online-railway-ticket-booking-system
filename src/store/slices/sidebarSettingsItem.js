@@ -27,8 +27,9 @@ export const sidebarSettingsItemSlice = createSlice({
    reducers: {
    putValues: (state, action) => {
      const i = state.parameters.indexOf(action.payload.type);
+     console.log(i)
       if(action.payload.meaning === true) {
-        if(i <=0) {
+        if(i <0) {
         state.parameters.push(action.payload.type)
         }
       }
