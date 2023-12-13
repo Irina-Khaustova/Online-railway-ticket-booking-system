@@ -7,11 +7,7 @@ import Reviews from "../components/mainPaige/Reviews";
 //import { useEffect } from "react";
 
 export default function MainPage() {
-  //const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(putInputValue(""));
-  //   // eslint-disable-next-line
-  // }, []);
+  
   return (
     <>
       <MainPageHeader/>
