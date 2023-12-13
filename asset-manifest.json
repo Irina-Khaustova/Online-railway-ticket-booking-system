@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/css/main.b54f8130.css",
-    "main.js": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/js/main.a3bb382a.js",
-    "static/js/787.4a940b25.chunk.js": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js",
-    "static/media/orderCompletedPageImg.png": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/orderCompletedPageImg.cd6d08fdc0aab35e694f.png",
-    "static/media/png": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/2fec5f0f798b8787930c80dd5d6472af.169a2b98faf4a30d19da.png",
-    "static/media/fourthClass.png": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/fourthClass.0412828810b4cb27f8ab.png",
-    "static/media/image.png": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/image.09378d6fd2fdba506efb.png",
-    "static/media/scheme-first.png": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/scheme-first.5798c72692a4ce671cfa.png",
-    "index.html": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/index.html",
-    "static/media/значок ошибки.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/значок ошибки.f617ffc64fffb160643e.svg",
-    "static/media/Icons.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/Icons.17889a9a470139a5b2cb084bfd0a4618.svg",
-    "static/media/checkChekbox.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/checkChekbox.bded2f1ffaf8be1c14d1.svg",
-    "static/media/минус в кружке.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/минус в кружке.6dad5a5ed3ae3bc4dfdb.svg",
-    "static/media/mark right.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/mark right.468a2fa69568f0c0621a.svg",
-    "static/media/Group 2@2x.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/Group 2@2x.be66dc2df27ce405f4f5.svg",
-    "static/media/Group 2.svg": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/media/Group 2.78444e4ad77121b5751a.svg",
-    "main.b54f8130.css.map": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/css/main.b54f8130.css.map",
-    "main.a3bb382a.js.map": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/js/main.a3bb382a.js.map",
-    "787.4a940b25.chunk.js.map": "/http//Irina-Khaustova.github.io/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js.map"
+    "main.css": "/diploma-booking-tickets-online/static/css/main.2b603d4a.css",
+    "main.js": "/diploma-booking-tickets-online/static/js/main.617cbc9c.js",
+    "static/js/787.4a940b25.chunk.js": "/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js",
+    "static/media/orderCompletedPageImg.png": "/diploma-booking-tickets-online/static/media/orderCompletedPageImg.cd6d08fdc0aab35e694f.png",
+    "static/media/png": "/diploma-booking-tickets-online/static/media/2fec5f0f798b8787930c80dd5d6472af.169a2b98faf4a30d19da.png",
+    "static/media/fourthClass.png": "/diploma-booking-tickets-online/static/media/fourthClass.0412828810b4cb27f8ab.png",
+    "static/media/image.png": "/diploma-booking-tickets-online/static/media/image.09378d6fd2fdba506efb.png",
+    "static/media/scheme-first.png": "/diploma-booking-tickets-online/static/media/scheme-first.5798c72692a4ce671cfa.png",
+    "static/media/значок ошибки.svg": "/diploma-booking-tickets-online/static/media/значок ошибки.f617ffc64fffb160643e.svg",
+    "index.html": "/diploma-booking-tickets-online/index.html",
+    "static/media/Icons.svg": "/diploma-booking-tickets-online/static/media/Icons.17889a9a470139a5b2cb084bfd0a4618.svg",
+    "static/media/checkChekbox.svg": "/diploma-booking-tickets-online/static/media/checkChekbox.bded2f1ffaf8be1c14d1.svg",
+    "static/media/минус в кружке.svg": "/diploma-booking-tickets-online/static/media/минус в кружке.6dad5a5ed3ae3bc4dfdb.svg",
+    "static/media/mark right.svg": "/diploma-booking-tickets-online/static/media/mark right.468a2fa69568f0c0621a.svg",
+    "static/media/Group 2@2x.svg": "/diploma-booking-tickets-online/static/media/Group 2@2x.be66dc2df27ce405f4f5.svg",
+    "static/media/Group 2.svg": "/diploma-booking-tickets-online/static/media/Group 2.78444e4ad77121b5751a.svg",
+    "main.2b603d4a.css.map": "/diploma-booking-tickets-online/static/css/main.2b603d4a.css.map",
+    "main.617cbc9c.js.map": "/diploma-booking-tickets-online/static/js/main.617cbc9c.js.map",
+    "787.4a940b25.chunk.js.map": "/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b54f8130.css",
-    "static/js/main.a3bb382a.js"
+    "static/css/main.2b603d4a.css",
+    "static/js/main.617cbc9c.js"
   ]
 }
