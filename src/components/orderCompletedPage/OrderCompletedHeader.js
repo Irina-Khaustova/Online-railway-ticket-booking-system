@@ -6,9 +6,6 @@ export default function OrderCompletedPageHeader() {
       <div className="container order-completed-page-container">
         <div className="logo"></div>
         <Menu className="menu"></Menu>
-        
-         
-        
       </div>
     </>
   );

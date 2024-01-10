@@ -87,7 +87,6 @@ export default function SuccessfulNotificationPageMain() {
       navigate('/passenger.html/');
     } 
     
-   
     const handleClickClose = () => {
 
     } 
@@ -95,8 +94,6 @@ export default function SuccessfulNotificationPageMain() {
     const handleChangeValue = (evt) => {
      
     }
-
-
 
     const handleClickChangeTrain  = (evt) => {
       navigate('/train.html');

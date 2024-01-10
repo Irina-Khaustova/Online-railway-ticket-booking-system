@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { putValues } from "../../../store/slices/sidebarSettingsItem";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import Range from "./Range";
 
 export default function SidebarChoiceTime(props) {
-const dispatch = useDispatch();
 
 const {startDepartureHourFrom, startDepartureHourTo, startArrivalHourFrom, startArrivalHourTo,
   endDepartureHourFrom, endDepartureHourTo, endArrivalHourFrom, endArrivalHourTo} = useSelector((state) => state.sidebarSettingsItem);

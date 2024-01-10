@@ -10,7 +10,6 @@ export default function PassengerPageMain(props) {
     const {adultsDeparture, childrenWithSeatDeparture} = useSelector(state => state.seatsSelection)
     const {validSet, isValid} = useSelector(state => state.passengers)
     const {seatsArrival, seatsDeparture, chooseWagon} = useSelector(state => state.sidebarSettingsItem)
-   // const [isValid, setIsValid] = useState(false);
 
    let passengers = Number(adultsDeparture) + Number(childrenWithSeatDeparture);
     const newarr = [];
@@ -39,45 +38,13 @@ export default function PassengerPageMain(props) {
 
 
 }
-//const arrNew = validSet? validSet: newarr;
 
     const [classButton, setClassButton] = useState('seats-selection-button-next gray')
     const [arrValid, setArrValid] = useState('');
     const [classN, setclassN] = useState('passenger-number-button-hidden');
 
-    // const arr = [];
-  
     const dispatch = useDispatch();
-    // let passengers = Number(adultsDeparture) + Number(childrenWithSeatDeparture);
-
-    // let passengers = Number(adultsDeparture) + Number(childrenWithSeatDeparture);
-    // const newarr = [];
-
-    //const arrNew = validSet? validSet: newarr;
-
-//     for(let i=1; i < passengers+1; i+=1) {
-     
-//       arr.push({i});
-//       newarr.push({'id': i, 'status': false, 
-//       'passenger': {
-        
-//           "is_adult": '',
-//           "first_name": "",
-//           "last_name": "",
-//           "patronymic": "",
-//           "gender": null,
-//           "birthday": "",
-//           "document_type": "",
-//           "document_data": "",
-//           "seat_number_arrival": '',
-//         "seat_number_departure": '',
-//         "is_child": null,
-//         "include_children_seat": null
-//       }
-//     })
-  
-  
-// }
+   
 const a = validSet? 1: 2
     
 console.log(newarr, a)
@@ -104,55 +71,6 @@ console.log(newarr, a)
     setClassButton('seats-selection-button-next gray')
    }
   },[isValid])
-
-    // for(let i=1; i < passengers + 1; i+=1) {
-    //   arrValid.push({'id': i, 'status': false})
-    // }
-   
-    // const isValidFunc = (id, status) => {
-      
-    //   setArrValid(arr)
-    //   dispatch(putValid({id: id, status: status}))
-    //   if(isValid === true) {
-    //     console.log(isValid + 999)
-    //     setClassButton('seats-selection-button-next orange')
-    //   } else {
-    //     setClassButton('seats-selection-button-next gray')
-    //   }
-    //   console.log(validSet)
-    //   for(let i=0; i < validSet.length; i+=1) {
-    //     if(validSet[i].status === false) {
-    //       setIsValid(false);
-    //     } else {
-    //       setIsValid(true)
-    //     }
-    //   }
-    //   if(isValid === true) {
-    //     setClassButton('seats-selection-button-next orange')
-    //   } else {
-    //     setClassButton('seats-selection-button-next gray')
-    //   }
-    //   console.log(validSet)
-    // }
-    
-
-    // useEffect(() => {
-    //   if(validSet) {
-    //   for(let i=0; i < validSet.length; i+=1) {
-    //     if(validSet[i].status === false) {
-    //       setIsValid(false);
-    //     } else {
-    //       setIsValid(true)
-    //     }
-    //   }
-    // }
-      // if(isValid === true) {
-      //   console.log(isValid + 999)
-      //   setClassButton('seats-selection-button-next orange')
-      // } else {
-      //   setClassButton('seats-selection-button-next gray')
-      // }
-    // },[validSet])
 
     const navigate = useNavigate();
 

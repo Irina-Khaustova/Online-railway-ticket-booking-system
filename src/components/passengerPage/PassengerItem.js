@@ -104,19 +104,11 @@ export default function PassengerItem(props) {
             console.log(55)
  
         }
-      //dispatch(putPassengers(passengers));
+      
     },[validFirstName,validLastName,validPatronymic ,firstName, lastName, patronymic, sertificateNumber, passportNumber, passportSeries, validPassportNumber, validPassportSeries, validSertificateNumber])
 
     const handleChangeValue = (evt) => {
-      // const stringRegex = /^[а-яА-Я]+$/;
-      // const passportSeriesRegex = /^([0-9]{2}\s{1}[0-9]{2})?$/;
-      // const passportNumberRegex = /^([0-9]{6})?$/;
-      // const sertificateNumberRegex = /^([IVX]{3}[-]{1}[а-яА-Я]{2}[-]{1}[0-9]{6})?$/;
-      // const a = stringRegex.test(evt.target.value);
-      // const b = passportSeriesRegex.test(evt.target.value);
-      // const c = passportNumberRegex.test(evt.target.value);
-      // const d = sertificateNumberRegex.test(evt.target.value);
-       
+      
      if(evt.target.name === 'firstName') {
       setFirstName(evt.target.value)
       setValidFirstName(validation('string', evt.target.value))
@@ -142,22 +134,6 @@ export default function PassengerItem(props) {
       setDateOfBirth(evt.target.value);
       
      }
-    //   dispatch(changePassenger({'id': id, 'passenger': 
-    //  {"coach_id": "",
-    //   "person_info": {
-    //     "is_adult": {},
-    //     "first_name": {firstName},
-    //     "last_name": {lastName},
-    //     "patronymic": {patronymic},
-    //     "gender": {gender},
-    //     "birthday": {dateOfBirth},
-    //     "document_type": {document},
-    //     "document_data": {}
-    //   }, 
-    //   "seat_number": 10,
-    //   "is_child": {isChild},
-    //   "include_children_seat": {includeChild}
-    // }}))
     }
 
     const handleChangeIsAdult = (evt) => {

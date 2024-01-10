@@ -1,15 +1,14 @@
 import { useNavigate} from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 import { useState,useEffect } from "react";
-import { putSearchFormValues,putTest } from "../../store/slices/searchTrainForm";
-import { useGetCitiesQuery, useGetTrainQuery } from "../../store/slices/MyApi";
+import { putSearchFormValues} from "../../store/slices/searchTrainForm";
+import { useGetCitiesQuery} from "../../store/slices/MyApi";
 
 export default function Input(props) {
 
-  //const { className1 } = useSelector((state) => state.searchTrainForm);
-  //console.log(className1)
+  
   const {classContainer} = props;
-  //let flag = false;
+  
 
   const dispatch = useDispatch();
   const {pointOfDeparture, destination, datePointOfDeparture, dateDestination} = useSelector((state) => state.searchTrainForm)

@@ -132,8 +132,7 @@ const handleClickSeat = (evt) => {
         newSeatPlace.splice(newSeatPlace.indexOf(newSeatPlace.filter((el) => el.item === evt.target.id)), 1)
         setSeatPlace(newSeatPlace);
         console.log(newSeatPlace)
-        //dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        //dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace}))
+    
     } else if (evt.target.className === 'scheme-block-item available'){ 
         evt.target.className = 'scheme-block-item available choose';
         let newSeatPlace = seatPlace;
@@ -144,10 +143,9 @@ const handleClickSeat = (evt) => {
         } else {
         newSeatPlace.push({wagon: item.coach.name, item: evt.target.id, price: priceSeat1, child: false})
         }
-        //setPriceSeat(newSeatPlace)
+        
         setSeatPlace(newSeatPlace)
-        // dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        // dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace, chooseWagon: item}))
+       
     }
     console.log(seatPlace)
     dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
@@ -182,8 +180,7 @@ const handleClickSeat = (evt) => {
               }) );
             }
             setSeatPlace(newSeatPlace)
-        //     dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        // dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace}))
+       
             console.log(newSeatPlace)
           } 
         } else if (evt.currentTarget.id === 'linen-included') {
@@ -195,8 +192,7 @@ const handleClickSeat = (evt) => {
               }) );
             }
             setSeatPlace(newSeatPlace)
-        //     dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        // dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace}))
+       
           }
         }
      } else if(evt.currentTarget.className  === "options-item options-choose") {
@@ -211,8 +207,7 @@ const handleClickSeat = (evt) => {
             }) );
           }
           setSeatPlace(newSeatPlace)
-        //   dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        // dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace}))
+        
       } else if (evt.currentTarget.id === 'linen-included') {
           setLinensIncludedPrice(0);
           if(seatPlace) {
@@ -221,9 +216,6 @@ const handleClickSeat = (evt) => {
             }) );
           }
           setSeatPlace(newSeatPlace)
-        //   dispatch(putTotalCoast({wagon: item.coach.name, category: `seats${category}`}))
-        // dispatch(putTotalCoast1({wagon: item.coach.name, category: `seats${category}`,seats: seatPlace}))
-
       }
     }
     setSeatPlace(newSeatPlace)
