@@ -10,8 +10,6 @@ export default function PersonalInformationPageMain(props) {
     const handleClickClose = () => {
 
     } 
-
-  
       return (
         <div className="passenger-item-container">
           <div className="passenger-number-container">

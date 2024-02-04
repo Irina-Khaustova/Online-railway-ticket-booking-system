@@ -31,8 +31,6 @@ sort(62, block5, seats);
 
 let colorlass = "rgba(196, 196, 196, 1";
 
-
-
     return (
       <div className="wagon-scheme">
         <div className="number-seats-left-fourth-class"></div>
