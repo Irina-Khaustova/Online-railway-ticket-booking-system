@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Online-railway-ticket-booking-system/static/css/main.9e9ba51f.css",
-    "main.js": "/Online-railway-ticket-booking-system/static/js/main.d6b2fc95.js",
+    "main.js": "/Online-railway-ticket-booking-system/static/js/main.3ba53c03.js",
     "static/js/787.4a940b25.chunk.js": "/Online-railway-ticket-booking-system/static/js/787.4a940b25.chunk.js",
     "static/media/orderCompletedPageImg.png": "/Online-railway-ticket-booking-system/static/media/orderCompletedPageImg.cd6d08fdc0aab35e694f.png",
     "static/media/png": "/Online-railway-ticket-booking-system/static/media/2fec5f0f798b8787930c80dd5d6472af.169a2b98faf4a30d19da.png",
@@ -17,11 +17,11 @@
     "static/media/Group 2@2x.svg": "/Online-railway-ticket-booking-system/static/media/Group 2@2x.be66dc2df27ce405f4f5.svg",
     "static/media/Group 2.svg": "/Online-railway-ticket-booking-system/static/media/Group 2.78444e4ad77121b5751a.svg",
     "main.9e9ba51f.css.map": "/Online-railway-ticket-booking-system/static/css/main.9e9ba51f.css.map",
-    "main.d6b2fc95.js.map": "/Online-railway-ticket-booking-system/static/js/main.d6b2fc95.js.map",
+    "main.3ba53c03.js.map": "/Online-railway-ticket-booking-system/static/js/main.3ba53c03.js.map",
     "787.4a940b25.chunk.js.map": "/Online-railway-ticket-booking-system/static/js/787.4a940b25.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9e9ba51f.css",
-    "static/js/main.d6b2fc95.js"
+    "static/js/main.3ba53c03.js"
   ]
 }
