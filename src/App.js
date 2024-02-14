@@ -20,7 +20,7 @@ function App() {
         <Route path="/about.html" element={<SuccessfullNotificationPage/>}/>
         <Route path="/passenger.html" element={<PassengerPage/>}/>
         <Route path="/complet.html" element={<OrderCompletedPage/>}/>
-        <Route path="*" element={<NotFoundPage/>}/>
+        <Route path="*" element={<MainPage/>}/>
       </Routes>
     </div>
   );
