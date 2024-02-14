@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/diploma-booking-tickets-online/static/css/main.2b603d4a.css",
-    "main.js": "/diploma-booking-tickets-online/static/js/main.617cbc9c.js",
+    "main.js": "/diploma-booking-tickets-online/static/js/main.117620c7.js",
     "static/js/787.4a940b25.chunk.js": "/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js",
     "static/media/orderCompletedPageImg.png": "/diploma-booking-tickets-online/static/media/orderCompletedPageImg.cd6d08fdc0aab35e694f.png",
     "static/media/png": "/diploma-booking-tickets-online/static/media/2fec5f0f798b8787930c80dd5d6472af.169a2b98faf4a30d19da.png",
@@ -17,11 +17,11 @@
     "static/media/Group 2@2x.svg": "/diploma-booking-tickets-online/static/media/Group 2@2x.be66dc2df27ce405f4f5.svg",
     "static/media/Group 2.svg": "/diploma-booking-tickets-online/static/media/Group 2.78444e4ad77121b5751a.svg",
     "main.2b603d4a.css.map": "/diploma-booking-tickets-online/static/css/main.2b603d4a.css.map",
-    "main.617cbc9c.js.map": "/diploma-booking-tickets-online/static/js/main.617cbc9c.js.map",
+    "main.117620c7.js.map": "/diploma-booking-tickets-online/static/js/main.117620c7.js.map",
     "787.4a940b25.chunk.js.map": "/diploma-booking-tickets-online/static/js/787.4a940b25.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2b603d4a.css",
-    "static/js/main.617cbc9c.js"
+    "static/js/main.117620c7.js"
   ]
 }
