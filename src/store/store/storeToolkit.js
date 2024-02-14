@@ -6,7 +6,6 @@ import { myApi } from '../slices/MyApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import  passengers  from '../slices/passengers';
 
-import saga from '../sagas/indexToolkit';
 import trainSelection from '../slices/trainSelection';
 import chooseTrainItem from '../slices/chooseTrainItem';
 import seatsSelection from '../slices/seatsSelection';
